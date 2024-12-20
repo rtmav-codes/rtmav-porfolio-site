@@ -1,0 +1,14 @@
+.card {
+    background: var(--color-dark);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.card-green {
+    background: var(--color-green);
+}
+
+.card-blue {
+    background: var(--color-blue);
+}

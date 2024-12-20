@@ -1,0 +1,27 @@
+.input {
+    appearance: none;
+    background: transparent;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-gray);
+    padding: 1rem 0.5rem;
+    width: 100%;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    resize: none;
+}
+
+
+form {
+    justify-content: center;
+    position: relative;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: solid 1px rgb(203, 203, 203);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-family: var(--font-family);
+}
