@@ -129,39 +129,27 @@
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaCol1 as { video, coverImage }}
                             <div class="p-3">
-                                {#if video}
-                                    <Video src={video?.url} class="w-100 border border-white rounded-xl" controls />
-                                {:else}
-                                    <Lightbox enableClickToClose>
-                                        <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
-                                    </Lightbox>
-                                {/if}
+                                <Lightbox enableClickToClose>
+                                    <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
+                                </Lightbox>
                             </div>
                         {/each}
                     </div>
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaCol2 as { video, coverImage }}
                             <div class="p-3">
-                                {#if video}
-                                    <Video src={video?.url} class="w-100 border border-white rounded-xl" controls />
-                                {:else}
-                                    <Lightbox enableClickToClose>
-                                        <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
-                                    </Lightbox>
-                                {/if}
+                                <Lightbox enableClickToClose>
+                                    <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
+                                </Lightbox>
                             </div>
                         {/each}
                     </div>
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaCol3 as { video, coverImage }}
                             <div class="p-3">
-                                {#if video}
-                                    <Video src={video?.url} class="w-100 border border-white rounded-xl" controls />
-                                {:else}
-                                    <Lightbox enableClickToClose>
-                                        <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
-                                    </Lightbox>
-                                {/if}
+                                <Lightbox enableClickToClose>
+                                    <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
+                                </Lightbox>
                             </div>
                         {/each}
                     </div>
@@ -190,7 +178,6 @@
     let open: boolean = false;
 
     import { Lightbox } from 'svelte-lightbox';
-    import { Video } from 'flowbite-svelte';
     import media from "$lib/data/media-speak2me.js";
 
     const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
