@@ -1,5 +1,4 @@
-<script>
-// @ts-nocheck
+<script lang="ts">
 
     import { fly, scale } from 'svelte/transition';
     import { quadOut } from 'svelte/easing';
@@ -10,7 +9,7 @@
 </script>
 
 {#if open}
-    <div>
+    <div class="font-mono">
         {#each ['Home', 'Surgical Theater', 'Wallet Guard', 'Speak2Me'] as link, i}
             <!-- svelte-ignore a11y-missing-attribute -->
             <a href="{links[i]}" style="text-decoration:none">
@@ -40,7 +39,7 @@
         color: #eef;
     }
     p {
-        font-weight: bold;
+        font-weight: semi-bold;
         font-size: 1.5em;
         cursor: pointer;
         width: max-content;
