@@ -83,7 +83,7 @@ function _page($$payload, $$props) {
   push();
   const prerender = true;
   const each_array_1 = ensure_array_like(featuredProjects);
-  $$payload.out += `<div class="bg-black text-white font-mono p-5"><div${attr("class", `bg-[(url('${stringify(general?.headerImage?.url)})'))]`)}></div> <div class="flex flex-col justify-center items-center pb-5"><div class="flex flex-col lg:w-3/4 w-full"><div class="flex flex-col col-12 mb-5"><div class="bg-black border p-5 rounded-xl flex flex-col justify-center items-center"><div class="flex justify-center items-center"><img${attr("src", general?.avatar?.url)} class="border-2 border-white rounded-full w-36 mb-5" alt=""></div> <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center"><h1 class="text-center lg:text-left text-2xl font-semibold mb-3">${escape_html(general?.name)}</h1> <p class="mb-5 text-sm">${escape_html(general?.introDescription)}</p></div> <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4"><div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">`;
+  $$payload.out += `<div class="bg-black text-white font-mono p-5"><div class="flex flex-col justify-center items-center pb-5"><div class="flex flex-col lg:w-3/4 w-full"><div class="flex flex-col col-12 mb-5"><div class="bg-black border p-5 rounded-xl flex flex-col justify-center items-center"><div class="flex justify-center items-center"><img${attr("src", general?.avatar?.url)} class="border-2 border-white rounded-full w-36 mb-5" alt=""></div> <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center"><h1 class="text-center lg:text-left text-2xl font-semibold mb-3">${escape_html(general?.name)}</h1> <p class="mb-5 text-sm">${escape_html(general?.introDescription)}</p></div> <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4"><div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">`;
   {
     $$payload.out += "<!--[-->";
     $$payload.out += `<button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3"><a class="text-white text-xs font-semibold flex flex-row justify-center items-center"${attr("href", general?.gitHub)} target="_blank" rel="noreferrer"><img class="w-5 h-5 mb-1" src="/github.svg" alt="email icon"> <span class="ml-3">GitHub</span></a></button>`;
@@ -114,7 +114,7 @@ function _page($$payload, $$props) {
   $$payload.out += `<!--]--> <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2> <!--[-->`;
   for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
     let { title, description, video, image, demoUrl } = each_array_1[$$index_1];
-    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 mb-5"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full">`;
+    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-7 mb-5"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full">`;
     if (video?.url) {
       $$payload.out += "<!--[-->";
       Video($$payload, { cover: image?.url, video: video?.url });

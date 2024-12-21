@@ -1,5 +1,4 @@
 <div class="bg-black text-white font-mono p-5">
-    <div class="bg-[(url('{general?.headerImage?.url})'))]"></div>
     <div class="flex flex-col justify-center items-center pb-5">
         <div class="flex flex-col lg:w-3/4 w-full">
                 <!-- About -->
