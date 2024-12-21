@@ -140,7 +140,7 @@
                 <!-- Recent Projects -->
                 <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2>
                 {#each featuredProjects as { title, description, video, image, demoUrl }}
-                    <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-0 mb-5">
+                    <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 mb-5">
                         <div class="flex lg:flex-row flex-col justify-start items-center">
                             <div class="flex flex-col justify-start items-center lg:w-1/4 w-full">
                                 {#if video?.url}
