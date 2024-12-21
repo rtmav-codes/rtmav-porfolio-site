@@ -107,10 +107,16 @@
                             Billing Integration:
                         </h3>
                         <ul class="font-normal">
-                            <li>Streamlined billing processes by integrating a billing module within the app, reducing the likelihood of errors.</li>
+                            <li>
+                                Streamlined billing processes by integrating a billing module within the app, reducing the 
+                                likelihood of errors.
+                            </li>
                         </ul>
                         <ul class="font-normal">
-                            <li>Provided a seamless transition from therapy sessions to billing, saving time and improving the overall administrative experience for therapists.</li>
+                            <li>
+                                Provided a seamless transition from therapy sessions to billing, saving time and improving 
+                                the overall administrative experience for therapists.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -121,7 +127,10 @@
                             <li>To assist in adoption and retention of users we set out to gamify the exercises.</li>
                         </ul>
                         <ul class="font-normal">
-                            <li>The goal was to make interactive excercises that were challenging but also fun with engaging graphics to make the patients excited to log in and complete their excercises.</li>
+                            <li>
+                                The goal was to make interactive excercises that were challenging but also fun with engaging 
+                                graphics to make the patients excited to log in and complete their excercises.
+                            </li>
                         </ul>
                     </li>
                 </ol>
@@ -175,6 +184,7 @@
 
     import { Hamburger } from 'svelte-hamburgers';
     import Menu from './Menu.svelte';
+    import { onMount } from 'svelte';
 
     let open: boolean = false;
 
@@ -184,4 +194,16 @@
     const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
     const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
     const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
+
+    const prefetchImages = () => {
+        const allMedia = [...mediaCol1, ...mediaCol2, ...mediaCol3];
+        allMedia.forEach(item => {
+            const img = new Image();
+            img.src = item.src;
+        });
+    };
+
+    onMount(() => {
+        prefetchImages();
+    });
 </script>
