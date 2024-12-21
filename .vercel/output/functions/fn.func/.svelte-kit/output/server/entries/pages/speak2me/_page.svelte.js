@@ -167,7 +167,7 @@ function _page($$payload, $$props) {
                                 and accurate analysis of patients' facial movements during exercises.</li></ul></li> <li><h3 class="mt-2 text-sm">Real-Time Feedback and Progress Tracking:</h3> <ul class="font-normal"><li>Provided real-time feedback on the user's speech, helping therapists to identify areas for 
                                 improvement and track progress over time.</li></ul></li> <li><h3 class="mt-2 text-sm">Personalized Exercise Creation:</h3> <ul class="font-normal"><li>Designed an intuitive interface that allows therapists to create personalized exercise regimine tailored to individual patient needs.</li></ul></li> <li><h3 class="mt-2 text-sm">Objective Facial Asymmetry Tracking:</h3> <ul class="font-normal"><li>Incorporated objective measurements for facial asymmetry tracking, reducing the reliance on subjective assessments.</li> <li>Provided visual analytics and progress reports to therapists, enabling them to make data-driven decisions in the treatment process.</li></ul></li> <li><h3 class="mt-2 text-sm">Paperless Curriculum Management:</h3> <ul class="font-normal"><li>Integrated trust-building elements such as testimonials, case studies, or certifications to instill confidence in the speech therapy company's expertise and reliability.</li> <li>Utilized a clean and professional design aesthetic to convey a sense of security and trustworthiness.</li></ul></li> <li><h3 class="mt-2 text-sm">Billing Integration:</h3> <ul class="font-normal"><li>Streamlined billing processes by integrating a billing module within the app, reducing the likelihood of errors.</li></ul> <ul class="font-normal"><li>Provided a seamless transition from therapy sessions to billing, saving time and improving the overall administrative experience for therapists.</li></ul></li> <li><h3 class="mt-2 text-sm">Gamification:</h3> <ul class="font-normal"><li>To assist in adoption and retention of users we set out to gamify the exercises.</li></ul> <ul class="font-normal"><li>The goal was to make interactive excercises that were challenging but also fun with engaging graphics to make the patients excited to log in and complete their excercises.</li></ul></li></ol> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3> <div class="grid lg:grid-cols-3 grid-cols-1 lg:mx-24 mx-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`;
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let { video, coverImage } = each_array[$$index];
+      let { coverImage } = each_array[$$index];
       $$payload2.out += `<div class="p-3">`;
       Lightbox($$payload2, {
         enableClickToClose: true,
@@ -180,7 +180,7 @@ function _page($$payload, $$props) {
     }
     $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-      let { video, coverImage } = each_array_1[$$index_1];
+      let { coverImage } = each_array_1[$$index_1];
       $$payload2.out += `<div class="p-3">`;
       Lightbox($$payload2, {
         enableClickToClose: true,
@@ -193,7 +193,7 @@ function _page($$payload, $$props) {
     }
     $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
     for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
-      let { video, coverImage } = each_array_2[$$index_2];
+      let { coverImage } = each_array_2[$$index_2];
       $$payload2.out += `<div class="p-3">`;
       Lightbox($$payload2, {
         enableClickToClose: true,

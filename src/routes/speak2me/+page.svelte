@@ -129,7 +129,7 @@
                 <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3>
                 <div class="grid lg:grid-cols-3 grid-cols-1 lg:mx-24 mx-1">
                     <div class="flex flex-col col-12 col-md-4">
-                        {#each mediaCol1 as { video, coverImage }}
+                        {#each mediaCol1 as { coverImage }}
                             <div class="p-3">
                                 <Lightbox enableClickToClose>
                                     <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
@@ -138,7 +138,7 @@
                         {/each}
                     </div>
                     <div class="flex flex-col col-12 col-md-4">
-                        {#each mediaCol2 as { video, coverImage }}
+                        {#each mediaCol2 as { coverImage }}
                             <div class="p-3">
                                 <Lightbox enableClickToClose>
                                     <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
@@ -147,7 +147,7 @@
                         {/each}
                     </div>
                     <div class="flex flex-col col-12 col-md-4">
-                        {#each mediaCol3 as { video, coverImage }}
+                        {#each mediaCol3 as { coverImage }}
                             <div class="p-3">
                                 <Lightbox enableClickToClose>
                                     <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
