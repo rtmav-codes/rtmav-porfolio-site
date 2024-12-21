@@ -30,7 +30,7 @@ export default [
         }
     },{
         "title": "Trident Copy Trader",
-        "description": "Created a Fimga UX/UI Design for an administrative dashboard for a copy trading platform. The platform will allow Trident Trading to copy their algorithmic trading accounts to client exchange accounts.",
+        "description": "Created a Fimga UX/UI Design for an administrative dashboard as part of a team working on a copy trading platform. The platform will allow Trident Trading to copy their algorithmic trading accounts to client exchange accounts.",
         "demoUrl": null,
         "video": null,
         "image": {
@@ -38,7 +38,7 @@ export default [
         }
     },{
         "title": "Symphony Robotics System UX/UI Design",
-        "description": "Created a Fimga UX/UI Design for a surgical laser company. The platform will allow surgeons to perform plan for upcoming surgeries with a patient management system and a UI for creating a surgical path using medical scans and images from different types of scanners.",
+        "description": "Created a Fimga UX/UI Design for a surgical laser company. The platform will allow surgeons to perform planning for upcoming surgeries with a patient management system and a UI to create surgical paths using different types of medical scans and images.",
         "demoUrl": null,
         "video": null,
         "image": {
