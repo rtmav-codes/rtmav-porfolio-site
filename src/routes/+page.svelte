@@ -163,7 +163,7 @@
                                 <p class="lg:text-sm text-xs mb-2">{description}</p>
 
                                 {#if demoUrl}
-                                    <a href="{demoUrl}" class="link" rel="noreferrer">View Project</a>
+                                    <a href="{demoUrl}" class="link font-bold" rel="noreferrer">View Project</a>
                                 {/if}
                             </div>
                         </div>

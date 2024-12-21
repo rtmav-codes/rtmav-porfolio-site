@@ -125,7 +125,7 @@ function _page($$payload, $$props) {
     $$payload.out += `<!--]--></div> <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10"><h1 class="lg:text-xl text-lg font-semibold mb-2">${escape_html(title)}</h1> <p class="lg:text-sm text-xs mb-2">${escape_html(description)}</p> `;
     if (demoUrl) {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<a${attr("href", demoUrl)} class="link" rel="noreferrer">View Project</a>`;
+      $$payload.out += `<a${attr("href", demoUrl)} class="link font-bold" rel="noreferrer">View Project</a>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
