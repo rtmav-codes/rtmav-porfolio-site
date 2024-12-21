@@ -1,6 +1,21 @@
-import { X as ensure_array_like, Y as attr, T as escape_html, Z as bind_props, S as pop, _ as stringify, Q as push } from "../../chunks/index.js";
-import { V as Video } from "../../chunks/video.js";
+import { X as fallback, Y as attr, Z as bind_props, _ as stringify, $ as ensure_array_like, T as escape_html, S as pop, Q as push } from "../../chunks/index.js";
 import { g as general } from "../../chunks/general.js";
+function Video($$payload, $$props) {
+  let showCover;
+  let cover = fallback($$props["cover"], "");
+  let video = fallback($$props["video"], "");
+  let playing = fallback($$props["playing"], false);
+  showCover = cover && !playing;
+  $$payload.out += `<div class="player h-100 border-radius svelte-10rkdp6"${attr("style", `background-image: url(${stringify(showCover ? cover : "")});`)} role="button" tabindex="0"><video${attr("class", `video border-radius svelte-10rkdp6 ${stringify([showCover ? "opacity-0" : ""].filter(Boolean).join(" "))}`)} playsInline controls><track kind="captions"> <source${attr("src", video)} type="video/mp4"></video> `;
+  if (showCover) {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<div class="play background-dark p-1 border-round svelte-10rkdp6"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"></path></svg></div>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]--></div>`;
+  bind_props($$props, { cover, video, playing });
+}
 const works = [
   {
     "title": "Speech Therapy Application",
@@ -89,7 +104,7 @@ function _page($$payload, $$props) {
   {
     $$payload.out += "<!--[-->";
     const each_array = ensure_array_like(works);
-    $$payload.out += `<div class="flex flex-col col-12 mt-5"><h1 class="text-2xl font-bold mb-3">Work Experience</h1></div> <div class="grid lg:grid-cols-2 grid-cols-1 gap-4"><!--[-->`;
+    $$payload.out += `<div class="flex flex-col col-12 mt-5 lg:px-0 px-5"><h1 class="text-2xl font-bold mb-3">Work Experience</h1></div> <div class="grid lg:grid-cols-2 grid-cols-1 gap-4"><!--[-->`;
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let { title, company, image } = each_array[$$index];
       $$payload.out += `<div class="flex flex-row justify-start items-center border rounded-xl overflow-hidden h-100 w-full py-5 px-10"><div class="flex flex-row flex-center justify-center items-center"><div class="flex flex-col justify-center items-center col-6 col-md-4 p-0"><img${attr("src", image?.url)} class="w-36 border-radius lg:ml-5 ml-1" alt=""></div> <div class="flex flex-col justify-center items-center w-5/6"><div class="px-3 py-12"><strong class="lg:text-lg text-ld">${escape_html(title)}</strong> <p class="text-xs">at <strong>${escape_html(company)}</strong></p></div></div></div></div>`;
@@ -99,7 +114,7 @@ function _page($$payload, $$props) {
   $$payload.out += `<!--]--> <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2> <!--[-->`;
   for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
     let { title, description, video, image, demoUrl } = each_array_1[$$index_1];
-    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full">`;
+    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-0 mb-5"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full">`;
     if (video?.url) {
       $$payload.out += "<!--[-->";
       Video($$payload, { cover: image?.url, video: video?.url });
@@ -116,7 +131,7 @@ function _page($$payload, $$props) {
     }
     $$payload.out += `<!--]--></div></div></div>`;
   }
-  $$payload.out += `<!--]--> <h1 class="text-2xl font-bold mt-5 mb-3">CONTACT</h1> <div class="py-8 mb-5 lg:mb-5 lg:py-16 px-4 lg:mx-auto border rounded-xl border-white"><div class="flex flex-col justify-center items-center p-10"><p class="mb-8 lg:mb-16 font-light text-center text-white sm:text-xl">Have a question for our team? Feel free to read out and we will get back to you as soon as possible!</p> <form target="_blank" action="https://formsubmit.co/rotem.avisar@gmail.com" method="POST" class="w-full"><div class="form-group"><div class="form-row"><label for="email" class="block text-sm font-bold">Your email</label> <input type="email" name="email" class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="name@email.com" required></div> <div class="form-row"><label for="subject" class="block text-sm font-medium pt-2">Subject</label> <input type="text" name="subject" class="form-control block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="Let us know how we can help you" required></div> <div class="sm:col-span-2 form-row"><label for="message" class="block text-sm font-medium pt-2">Your message</label> <textarea name="message" rows="6" class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Leave a comment..."></textarea></div> <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-900 rounded-lg bg-white sm:w-fit hover:bg-[#a2cfe2] focus:ring-4 focus:outline-none focus:ring-primary-300 mt-5">Send message</button></div></form></div></div></div></div></div>`;
+  $$payload.out += `<!--]--> <h1 class="text-2xl font-bold mt-5 mb-3">CONTACT</h1> <div class="py-8 mb-5 lg:mb-5 lg:py-16 px-4 lg:mx-auto border rounded-xl border-white"><div class="flex flex-col justify-center items-center p-10"><p class="mb-8 lg:mb-16 font-light text-center text-white sm:text-xl">Have a question for our team? Feel free to read out and we will get back to you as soon as possible!</p> <form target="_blank" action="https://formsubmit.co/rotem.avisar@gmail.com" method="POST" class="w-full"><div class="form-group"><div class="form-row"><label for="email" class="block text-sm font-bold">Your email</label> <input type="email" name="email" class="form-control shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="name@email.com" required></div> <div class="form-row"><label for="subject" class="block text-sm font-medium pt-2">Subject</label> <input type="text" name="subject" class="form-control block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="Let us know how we can help you" required></div> <div class="sm:col-span-2 form-row"><label for="message" class="block text-sm font-medium pt-2">Your message</label> <textarea name="message" rows="6" class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Leave a comment..."></textarea></div> <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-900 rounded-lg bg-white sm:w-fit hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 mt-5">Send message</button></div></form></div></div></div></div></div>`;
   bind_props($$props, { prerender });
   pop();
 }

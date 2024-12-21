@@ -1,4 +1,4 @@
-import { a8 as current_component, Q as push, Y as attr, _ as stringify, Z as bind_props, S as pop, a4 as rest_props, a5 as spread_attributes, a6 as slot, a7 as sanitize_props, a3 as fallback, a9 as store_get, T as escape_html, aa as unsubscribe_stores, ab as sanitize_slots, ac as spread_props } from "./index.js";
+import { a8 as current_component, Q as push, Y as attr, _ as stringify, Z as bind_props, S as pop, a4 as rest_props, a5 as spread_attributes, a6 as slot, a7 as sanitize_props, X as fallback, a9 as store_get, T as escape_html, aa as unsubscribe_stores, ab as sanitize_slots, ac as spread_props } from "./index.js";
 import { w as writable } from "./index2.js";
 function onDestroy(fn) {
   var context = (
