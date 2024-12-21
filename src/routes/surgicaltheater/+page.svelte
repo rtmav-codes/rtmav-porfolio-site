@@ -25,9 +25,9 @@
 
     <!-- Content -->
     <div class="flex flex-col lg:w-3/4 w-full mt-10">
-        <div class="flex flex-col lg:justify-start lg:items-start justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10">
+        <div class="flex flex-col justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10">
             <div class="flex flex-col justify-start items-start w-5/6">
-                <h1 class="text-white lg:text-xl text-md mt-2 font-semibold">
+                <h1 class="text-white lg:text-xl text-md mt-10 font-semibold">
                     My Role: UX Researcher and UX/UI Designer
                 </h1>
                 <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">

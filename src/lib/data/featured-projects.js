@@ -28,5 +28,13 @@ export default [
         "image": {
             "url": "/speak2me-featured.png"
         }
+    },{
+        "title": "Trident Copy Trader",
+        "description": "Created a Fimga UX/UI Design for an administrative dashboard for a copy trading platform. The platform will allow Trident Trading to copy their algorithmic trading accounts to client exchange accounts.",
+        "demoUrl": "speak2me",
+        "video": null,
+        "image": {
+            "url": "/trident-copy.png"
+        }
     },
 ]

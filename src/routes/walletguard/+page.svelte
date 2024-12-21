@@ -23,9 +23,10 @@
 
     <!-- Content -->
     <div class="flex flex-col lg:w-3/4 w-full mt-10">
-        <div class="flex flex-col lg:justify-start lg:items-start justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10">
+        <div class="flex flex-col justify-center items-center bg-black border rounded-xl 
+        lg:px-10 px-6 lg:py-0 py-10">
             <div class="flex flex-col justify-start items-start w-5/6">
-                <h1 class="text-white lg:text-xl text-md mt-2 font-semibold">
+                <h1 class="text-white lg:text-xl text-md mt-10 font-semibold">
                     My Role: Frontend Developer
                 </h1>
                 <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">
@@ -71,7 +72,8 @@
                         </h3>
                         <ul class="font-normal text-xs">
                             <li>Provided real-time feedback on the user's speech, helping therapists to identify areas for 
-                                improvement and track progress over time.</li>
+                                improvement and track progress over time.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -79,7 +81,9 @@
                             Personalized Exercise Creation:
                         </h3>
                         <ul class="font-normal text-xs">
-                            <li>Designed an intuitive interface that allows therapists to create personalized exercise regimine tailored to individual patient needs.</li>
+                            <li>Designed an intuitive interface that allows therapists to create personalized exercise regimine 
+                                tailored to individual patient needs.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -87,8 +91,14 @@
                             Objective Facial Asymmetry Tracking:
                         </h3>
                         <ul class="font-normal text-xs">
-                            <li>Incorporated objective measurements for facial asymmetry tracking, reducing the reliance on subjective assessments.</li>
-                            <li>Provided visual analytics and progress reports to therapists, enabling them to make data-driven decisions in the treatment process.</li>
+                            <li>
+                                Incorporated objective measurements for facial asymmetry tracking, reducing the reliance on 
+                                subjective assessments.
+                            </li>
+                            <li>
+                                Provided visual analytics and progress reports to therapists, enabling them to make data-driven 
+                                decisions in the treatment process.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -96,8 +106,13 @@
                             Paperless Curriculum Management:
                         </h3>
                         <ul class="font-normal text-xs">
-                            <li>Integrated trust-building elements such as testimonials, case studies, or certifications to instill confidence in the speech therapy company's expertise and reliability.</li>
-                            <li>Utilized a clean and professional design aesthetic to convey a sense of security and trustworthiness.</li>
+                            <li>
+                                Integrated trust-building elements such as testimonials, case studies, or certifications to instill 
+                                confidence in the speech therapy company's expertise and reliability.
+                            </li>
+                            <li>
+                                Utilized a clean and professional design aesthetic to convey a sense of security and trustworthiness.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -105,10 +120,16 @@
                             Billing Integration:
                         </h3>
                         <ul class="font-normal text-xs">
-                            <li>Streamlined billing processes by integrating a billing module within the app, reducing the likelihood of errors.</li>
+                            <li>
+                                Streamlined billing processes by integrating a billing module within the app, reducing the likelihood 
+                                of errors.
+                            </li>
                         </ul>
                         <ul class="font-normal text-xs">
-                            <li>Provided a seamless transition from therapy sessions to billing, saving time and improving the overall administrative experience for therapists.</li>
+                            <li>
+                                Provided a seamless transition from therapy sessions to billing, saving time and improving the overall 
+                                administrative experience for therapists.
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -119,7 +140,10 @@
                             <li>To assist in adoption and retention of users we set out to gamify the exercises.</li>
                         </ul>
                         <ul class="font-normal text-xs">
-                            <li>The goal was to make interactive excercises that were challenging but also fun with engaging graphics to make the patients excited to log in and complete their excercises.</li>
+                            <li>
+                                The goal was to make interactive excercises that were challenging but also fun with engaging graphics 
+                                to make the patients excited to log in and complete their excercises.
+                            </li>
                         </ul>
                     </li>
                 </ol>
@@ -162,7 +186,6 @@
                                     <Lightbox enableClickToClose>
                                         <img src="{coverImage?.url}" class="w-100 border border-white rounded-xl" alt="">
                                     </Lightbox>
-                                   
                                 {/if}
                             </div>
                         {/each}
