@@ -139,23 +139,16 @@
                 <!-- Recent Projects -->
                 <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2>
                 {#each featuredProjects as { title, description, video, image, demoUrl }}
-                    <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-7 mb-5">
+                    <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-3 mb-5">
                         <div class="flex lg:flex-row flex-col justify-start items-center">
                             <div class="flex flex-col justify-start items-center lg:w-1/4 w-full">
-                                {#if video?.url}
-                                    <Video
-                                        cover={image?.url}
-                                        video={video?.url}
+                                <div class="flex flex-col justify-start items-start lg:mt-0 mt-5">
+                                    <img 
+                                        src="{image?.url}" 
+                                        class="w-72 h-auto rounded-lg border border-white" 
+                                        alt=""
                                     />
-                                {:else}
-                                    <div class="flex flex-col justify-start items-start lg:mt-0 mt-5">
-                                            <img 
-                                                src="{image?.url}" 
-                                                class="w-72 h-auto rounded-lg border border-white" 
-                                                alt=""
-                                            />
-                                    </div>
-                                {/if}
+                                </div>
                             </div>
                             <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10">
                                 <h1 class="lg:text-xl text-lg font-semibold mb-2">{title}</h1>
@@ -215,7 +208,7 @@
 
 <script lang="ts">
 
-    import Video from "$lib/components/video.svelte";
+    import { Video } from 'flowbite-svelte';
     
     import general from "$lib/data/general.js";
     import media from "$lib/data/media.js";

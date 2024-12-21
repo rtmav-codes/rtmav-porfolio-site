@@ -88,7 +88,7 @@
       "_general.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CbceeleT.css"
+      "_app/immutable/assets/_layout.D65ojoo-.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -99,9 +99,6 @@
     "imports": [
       "_index.js",
       "_general.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.BbAHBLfx.css"
     ]
   },
   "src/routes/speak2me/+page.svelte": {

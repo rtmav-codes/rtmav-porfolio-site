@@ -1,21 +1,5 @@
-import { X as fallback, Y as attr, Z as bind_props, _ as stringify, $ as ensure_array_like, T as escape_html, S as pop, Q as push } from "../../chunks/index.js";
+import { X as ensure_array_like, Y as attr, T as escape_html, S as pop, Z as stringify, Q as push } from "../../chunks/index.js";
 import { g as general } from "../../chunks/general.js";
-function Video($$payload, $$props) {
-  let showCover;
-  let cover = fallback($$props["cover"], "");
-  let video = fallback($$props["video"], "");
-  let playing = fallback($$props["playing"], false);
-  showCover = cover && !playing;
-  $$payload.out += `<div class="player h-100 border-radius svelte-10rkdp6"${attr("style", `background-image: url(${stringify(showCover ? cover : "")});`)} role="button" tabindex="0"><video${attr("class", `video border-radius svelte-10rkdp6 ${stringify([showCover ? "opacity-0" : ""].filter(Boolean).join(" "))}`)} playsInline controls><track kind="captions"> <source${attr("src", video)} type="video/mp4"></video> `;
-  if (showCover) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<div class="play background-dark p-1 border-round svelte-10rkdp6"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"></path></svg></div>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--></div>`;
-  bind_props($$props, { cover, video, playing });
-}
 const works = [
   {
     "title": "Speech Therapy Application",
@@ -113,15 +97,7 @@ function _page($$payload, $$props) {
   $$payload.out += `<!--]--> <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2> <!--[-->`;
   for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
     let { title, description, video, image, demoUrl } = each_array_1[$$index_1];
-    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-7 mb-5"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full">`;
-    if (video?.url) {
-      $$payload.out += "<!--[-->";
-      Video($$payload, { cover: image?.url, video: video?.url });
-    } else {
-      $$payload.out += "<!--[!-->";
-      $$payload.out += `<div class="flex flex-col justify-start items-start lg:mt-0 mt-5"><img${attr("src", image?.url)} class="w-72 h-auto rounded-lg border border-white" alt=""></div>`;
-    }
-    $$payload.out += `<!--]--></div> <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10"><h1 class="lg:text-xl text-lg font-semibold mb-2">${escape_html(title)}</h1> <p class="lg:text-sm text-xs mb-2">${escape_html(description)}</p> `;
+    $$payload.out += `<div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 lg:mb-3 mb-5"><div class="flex lg:flex-row flex-col justify-start items-center"><div class="flex flex-col justify-start items-center lg:w-1/4 w-full"><div class="flex flex-col justify-start items-start lg:mt-0 mt-5"><img${attr("src", image?.url)} class="w-72 h-auto rounded-lg border border-white" alt=""></div></div> <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10"><h1 class="lg:text-xl text-lg font-semibold mb-2">${escape_html(title)}</h1> <p class="lg:text-sm text-xs mb-2">${escape_html(description)}</p> `;
     if (demoUrl) {
       $$payload.out += "<!--[-->";
       $$payload.out += `<a${attr("href", demoUrl)} class="link font-bold" rel="noreferrer">View Project</a>`;
