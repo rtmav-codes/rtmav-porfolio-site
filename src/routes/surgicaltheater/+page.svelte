@@ -166,7 +166,6 @@
 
 
 <script lang="ts">
-    export const prerender = true;
 
     import { Hamburger } from 'svelte-hamburgers';
     import Menu from './Menu.svelte';

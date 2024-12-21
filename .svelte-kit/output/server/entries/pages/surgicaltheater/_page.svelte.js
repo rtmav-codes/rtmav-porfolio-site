@@ -122,7 +122,6 @@ const mediaBefore = [
 ];
 function _page($$payload, $$props) {
   push();
-  const prerender = true;
   let open = false;
   const mediaBeforeCol1 = mediaBefore.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
   const mediaBeforeCol2 = mediaBefore.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
@@ -260,7 +259,6 @@ function _page($$payload, $$props) {
     $$render_inner($$inner_payload);
   } while (!$$settled);
   assign_payload($$payload, $$inner_payload);
-  bind_props($$props, { prerender });
   pop();
 }
 export {
