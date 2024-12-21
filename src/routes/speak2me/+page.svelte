@@ -7,24 +7,26 @@
 
 <Menu bind:open />
 
-<div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono">
+<div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5">
     <!-- Header Image -->
     <div class="flex flex-col justify-center items-center">
         <img 
             src="/work/speak2me-logo.png" 
             class="w-36 mt-10" 
-            alt="s2mlogo"
+            alt="speak2me logo"
         />
     </div>
 
     <!-- Title -->
-    <h1 class="text-white text-5xl mt-10">Speak2Me</h1>
-    <h2 class="text-white text-2xl mt-2 text-center">   iOS App for Facial Movement <br> Tracking in Speech Therapy</h2>
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="text-white text-5xl mt-10">Speak2Me</h1>
+        <h2 class="text-white text-2xl mt-2 text-center">   iOS App for Facial Movement <br> Tracking in Speech Therapy</h2>
+    </div>
 
     <!-- Content -->
     <div class="flex flex-col lg:w-3/4 w-full mt-10">
-        <div class="flex flex-col justify-start items-start bg-black border rounded-xl px-10 lg:py-10 py-10">
-            <div class="flex flex-col justify-start items-start">
+        <div class="flex flex-col lg:justify-start justify-center lg:items-start items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-10 py-10">
+            <div class="flex flex-col justify-start items-start w-5/6">
                 <h1 class="text-white text-xl mt-2 font-semibold">
                     My Role: UX Researcher and UX/UI Designer
                 </h1>
@@ -53,9 +55,9 @@
                     technology to capture and analyze the movements of the user's face, and provides feedback on the 
                     user's speech.
                 </p>
-                <ol class="list-decimal text-white text-md font-semibold pl-10 mx-24">
+                <ol class="list-decimal text-white text-md font-semibold lg:pl-10 pl-6 lg:mx-24 mx-1">
                     <li>
-                        <h3 class="mt-5">
+                        <h3 class="mt-5 text-sm">
                             Facial Movement Tracking with ARKit:
                         </h3>
                         <ul class="font-normal">
@@ -66,7 +68,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Real-Time Feedback and Progress Tracking:
                         </h3>
                         <ul class="font-normal">
@@ -75,7 +77,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Personalized Exercise Creation:
                         </h3>
                         <ul class="font-normal">
@@ -83,7 +85,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Objective Facial Asymmetry Tracking:
                         </h3>
                         <ul class="font-normal">
@@ -92,7 +94,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Paperless Curriculum Management:
                         </h3>
                         <ul class="font-normal">
@@ -101,7 +103,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Billing Integration:
                         </h3>
                         <ul class="font-normal">
@@ -112,7 +114,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Gamification:
                         </h3>
                         <ul class="font-normal">
@@ -125,7 +127,7 @@
                 </ol>
 
                 <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3>
-                <div class="grid grid-cols-3">
+                <div class="grid lg:grid-cols-3 grid-cols-1 lg:mx-24 mx-1">
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaCol1 as { video, coverImage }}
                             <div class="p-3">

@@ -9,7 +9,7 @@
     
 {#if open}
 
-    <div class="font-mono">
+    <div class="font-mono bg-black">
         {#each ['Home', 'Surgical Theater', 'Wallet Guard', 'Speak2Me'] as link, i}
             <!-- svelte-ignore a11y-missing-attribute -->
             <a href="{links[i]}" style="text-decoration:none">
@@ -36,7 +36,6 @@
         text-align: center;
         letter-spacing: 0.15em;
         padding: 1em;
-        padding-top: 0;
         color: #eef;
     }
     p {

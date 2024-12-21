@@ -192,7 +192,7 @@
                                 <label for="message" class="block text-sm font-medium pt-2">Your message</label>
                                 <textarea name="message" rows="6" class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Leave a comment..."></textarea>
                             </div>
-                            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-900 rounded-lg bg-white sm:w-fit hover:bg-[#a2cfe2] focus:ring-4 focus:outline-none focus:ring-primary-300 mt-5">Send message</button>
+                            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-900 rounded-lg bg-white sm:w-fit hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 mt-5">Send message</button>
                         </div>
                     </form>
                 </div>

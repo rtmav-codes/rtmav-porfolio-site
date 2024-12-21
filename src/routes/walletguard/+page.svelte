@@ -7,7 +7,7 @@
 
 <Menu bind:open />
 
-<div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono">
+<div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5">
     <!-- Header Image -->
     <div class="flex flex-col justify-center items-center">
         <img 
@@ -23,12 +23,12 @@
 
     <!-- Content -->
     <div class="flex flex-col lg:w-3/4 w-full mt-10">
-        <div class="flex flex-col justify-start items-start bg-black border rounded-xl px-10 lg:py-10 py-10">
-            <div class="flex flex-col justify-start items-start">
-                <h1 class="text-white text-xl mt-2 font-semibold">
+        <div class="flex flex-col lg:justify-start lg:items-start justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10">
+            <div class="flex flex-col justify-start items-start w-5/6">
+                <h1 class="text-white lg:text-xl text-md mt-2 font-semibold">
                     My Role: Frontend Developer
                 </h1>
-                <h2 class="text-white text-lg mt-5 font-semibold">
+                <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">
                     Project Overview:
                 </h2>
                 <p class="text-white text-md">
@@ -53,12 +53,12 @@
                     technology to capture and analyze the movements of the user's face, and provides feedback on the 
                     user's speech.
                 </p>
-                <ol class="list-decimal text-white text-md font-semibold pl-10 mx-24">
+                <ol class="list-decimal text-white text-md font-semibold lg:pl-10 pl-6 lg:mx-24 mx-1">
                     <li>
-                        <h3 class="mt-5">
+                        <h3 class="mt-5 text-sm">
                             Facial Movement Tracking with ARKit:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>
                                 Utilized ARKit to precisely track facial movements, providing therapists with a detailed 
                                 and accurate analysis of patients' facial movements during exercises.
@@ -66,66 +66,66 @@
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Real-Time Feedback and Progress Tracking:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Provided real-time feedback on the user's speech, helping therapists to identify areas for 
                                 improvement and track progress over time.</li>
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Personalized Exercise Creation:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Designed an intuitive interface that allows therapists to create personalized exercise regimine tailored to individual patient needs.</li>
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Objective Facial Asymmetry Tracking:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Incorporated objective measurements for facial asymmetry tracking, reducing the reliance on subjective assessments.</li>
                             <li>Provided visual analytics and progress reports to therapists, enabling them to make data-driven decisions in the treatment process.</li>
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Paperless Curriculum Management:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Integrated trust-building elements such as testimonials, case studies, or certifications to instill confidence in the speech therapy company's expertise and reliability.</li>
                             <li>Utilized a clean and professional design aesthetic to convey a sense of security and trustworthiness.</li>
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Billing Integration:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Streamlined billing processes by integrating a billing module within the app, reducing the likelihood of errors.</li>
                         </ul>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>Provided a seamless transition from therapy sessions to billing, saving time and improving the overall administrative experience for therapists.</li>
                         </ul>
                     </li>
                     <li>
-                        <h3 class="mt-2">
+                        <h3 class="mt-2 text-sm">
                             Gamification:
                         </h3>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>To assist in adoption and retention of users we set out to gamify the exercises.</li>
                         </ul>
-                        <ul class="font-normal">
+                        <ul class="font-normal text-xs">
                             <li>The goal was to make interactive excercises that were challenging but also fun with engaging graphics to make the patients excited to log in and complete their excercises.</li>
                         </ul>
                     </li>
                 </ol>
 
                 <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3>
-                <div class="grid grid-cols-3">
+                <div class="grid lg:grid-cols-3 grid-cols-1">
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaBeforeCol1 as { video, coverImage }}
                             <div class="p-3">
@@ -170,7 +170,7 @@
                 </div>
 
                 <h3 class="text-white text-xl mt-5 ml-5 font-semibold">After:</h3>
-                <div class="grid grid-cols-3">
+                <div class="grid lg:grid-cols-3 grid-cols-1">
                     <div class="flex flex-col col-12 col-md-4">
                         {#each mediaCol1 as { video, coverImage }}
                             <div class="p-3">
