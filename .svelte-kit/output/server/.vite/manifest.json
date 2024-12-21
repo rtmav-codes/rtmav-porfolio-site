@@ -55,6 +55,10 @@
       "_equality.js"
     ]
   },
+  "_media-speak2me.js": {
+    "file": "chunks/media-speak2me.js",
+    "name": "media-speak2me"
+  },
   "node_modules/.pnpm/@sveltejs+kit@2.13.0_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.15.0_vite@6.0.4_jiti@1.21.7__bowd25v26bamm572iffrsowz4q/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
@@ -88,7 +92,7 @@
       "_general.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.D65ojoo-.css"
+      "_app/immutable/assets/_layout.Dok6OUwZ.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -108,7 +112,8 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_GalleryThumbnail.svelte_svelte_type_style_lang.js"
+      "_GalleryThumbnail.svelte_svelte_type_style_lang.js",
+      "_media-speak2me.js"
     ],
     "css": [
       "_app/immutable/assets/_page.C4GlAWAt.css"
@@ -125,6 +130,20 @@
     ],
     "css": [
       "_app/immutable/assets/_page.oM3VgNzc.css"
+    ]
+  },
+  "src/routes/trident/+page.svelte": {
+    "file": "entries/pages/trident/_page.svelte.js",
+    "name": "entries/pages/trident/_page.svelte",
+    "src": "src/routes/trident/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_GalleryThumbnail.svelte_svelte_type_style_lang.js",
+      "_media-speak2me.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.C4GlAWAt.css"
     ]
   },
   "src/routes/walletguard/+page.svelte": {
