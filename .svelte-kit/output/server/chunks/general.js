@@ -1,5 +1,5 @@
 const general = {
-  "email": "rtmav.codes@proton.me",
+  "email": "rtmav.labs@proton.me",
   "id": "clbucvbhetqmq0alraz7sbmtz",
   "introDescription": "Dedicated and innovative frontend developer with a strong commitment to crafting exceptional user experiences. Eager to collaborate with like-minded professionals to design and implement cutting-edge solutions that push the boundaries of web development. Possesses a proven track record of delivering high-quality projects, combined with a passion for staying abreast of emerging industry trends. Ready to contribute technical expertise and creativity to a dynamic team focused on building impactful and aesthetically pleasing digital solutions.",
   "name": "Rotem Avisar",

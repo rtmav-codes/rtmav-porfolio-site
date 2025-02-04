@@ -23,6 +23,15 @@
       "_app/immutable/assets/GalleryThumbnail.CYapBYUW.css"
     ]
   },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_exports.js",
+      "_index2.js",
+      "_index.js"
+    ]
+  },
   "_equality.js": {
     "file": "chunks/equality.js",
     "name": "equality"
@@ -66,8 +75,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_exports.js",
-      "_index2.js"
+      "_client.js"
     ]
   },
   "node_modules/.pnpm/@sveltejs+kit@2.13.0_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.15.0_vite@6.0.4_jiti@1.21.7__bowd25v26bamm572iffrsowz4q/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -89,7 +97,8 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_general.js"
+      "_general.js",
+      "_client.js"
     ],
     "css": [
       "_app/immutable/assets/_layout.Dok6OUwZ.css"

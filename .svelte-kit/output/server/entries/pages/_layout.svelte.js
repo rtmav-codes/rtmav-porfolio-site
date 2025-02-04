@@ -1,5 +1,6 @@
 import { T as escape_html, S as pop, Q as push } from "../../chunks/index.js";
 import { g as general } from "../../chunks/general.js";
+import "../../chunks/client.js";
 function _layout($$payload, $$props) {
   push();
   let { children } = $$props;

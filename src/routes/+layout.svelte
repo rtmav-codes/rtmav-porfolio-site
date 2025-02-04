@@ -2,6 +2,8 @@
 	import '../app.css';
 	let { children } = $props();
 	import general from "$lib/data/general.js";
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	injectAnalytics();
 </script>
 
 {@render children()}
