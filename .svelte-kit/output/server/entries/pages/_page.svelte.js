@@ -87,6 +87,11 @@ function _page($$payload, $$props) {
   $$payload.out += `<div class="bg-black text-white font-mono p-5"><div class="flex flex-col justify-center items-center pb-5"><div class="flex flex-col lg:w-3/4 w-full"><div class="flex flex-col col-12 mb-5"><div class="bg-black border p-5 rounded-xl flex flex-col justify-center items-center"><div class="flex justify-center items-center"><img${attr("src", general?.avatar?.url)} class="border-2 border-white rounded-full w-36 mb-5" alt=""></div> <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center"><h1 class="text-center lg:text-left text-2xl font-semibold mb-3">${escape_html(general?.name)}</h1> <p class="mb-5 text-sm">${escape_html(general?.introDescription)}</p></div> <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4"><div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">`;
   {
     $$payload.out += "<!--[-->";
+    $$payload.out += `<button class="btn btn-outline flex flex-col justify-center rounded-md w-auto h-10"><a class="text-white text-md font-semibold flex flex-row justify-center items-center"${attr("href", general?.twitter)} target="_blank" rel="noreferrer"><img src="/twitter.png" class="w-10" alt="twitter logo"> <span class="ml-1">Twitter</span></a></button>`;
+  }
+  $$payload.out += `<!--]--> `;
+  {
+    $$payload.out += "<!--[-->";
     $$payload.out += `<button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3"><a class="text-white text-xs font-semibold flex flex-row justify-center items-center"${attr("href", general?.gitHub)} target="_blank" rel="noreferrer"><img class="w-5 h-5 mb-1" src="/github.svg" alt="email icon"> <span class="ml-3">GitHub</span></a></button>`;
   }
   $$payload.out += `<!--]--> `;

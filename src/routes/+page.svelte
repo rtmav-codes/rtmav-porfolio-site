@@ -18,31 +18,22 @@
                         <!-- Socials -->
                         <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4">
                             <div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">
+                                
                                 <!-- Twitter + Discord (Optional) -->
-                                <!-- {#if general?.twitter}
-                                    <button class="btn btn-outline flex flex-col justify-center rounded-md w-auto h-10">
-                                        <a class="text-white text-md font-semibold flex flex-row justify-center items-center" href="{general?.twitter}" target="_blank" rel="noreferrer">
-                                            <img src="/twitter.png" class="w-10" alt="twitter logo">
-                                            <span class="ml-1">
+                                {#if general?.twitter}
+                                    <button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3">
+                                        <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="{general?.twitter}" target="_blank" rel="noreferrer">
+                                            <img src="/twitter.png" class="w-5 h-5 mb-1" alt="twitter logo">
+                                            <span class="ml-3">
                                                 Twitter
                                             </span>
                                         </a>
                                     </button>
                                 {/if}
-                                {#if general?.discord}
-                                    <button class="btn btn-outline flex flex-col justify-center rounded-md w-auto h-10">
-                                        <a class="text-white text-md font-semibold flex flex-row justify-center items-center" href="{general?.discord}" target="_blank" rel="noreferrer">
-                                            <img src="/discord.png" class="w-10" alt="discord logo">
-                                            <span class="ml-1">
-                                                Discord
-                                            </span>
-                                        </a>
-                                    </button>
-                                {/if} -->
-
+                                
                                 <!-- GitHub -->
                                 {#if general?.gitHub}
-                                    <button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3">
+                                    <button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3 ml-2">
                                         <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="{general?.gitHub}" target="_blank" rel="noreferrer">
                                             <img
                                                 class="w-5 h-5 mb-1"
