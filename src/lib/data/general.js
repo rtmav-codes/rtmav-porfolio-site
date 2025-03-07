@@ -1,7 +1,7 @@
 export default {
     "email": "rtmav.labs@proton.me",
     "id": "clbucvbhetqmq0alraz7sbmtz",
-    "introDescription": "Full-stack developer eager to collaborate with talented professionals to design and implement cutting-edge web solutions. Proven track record of delivering high-quality projects. Passionate about staying updated with emerging industry trends. Ready to contribute technical expertise and creativity to a dynamic team focused on building impactful digital solutions.",
+    "introDescription": "Frontend developer eager to collaborate with talented professionals to design and implement cutting-edge web solutions. Proven track record of delivering high-quality projects. Passionate about staying updated with emerging industry trends. Ready to contribute technical expertise and creativity to a dynamic team focused on building impactful digital solutions.",
     "name": "Rotem Avisar",
     "twitter": "https://x.com/_rtmav",
     "discord": "",
