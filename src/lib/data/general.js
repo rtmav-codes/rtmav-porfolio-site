@@ -3,7 +3,7 @@ export default {
     "id": "clbucvbhetqmq0alraz7sbmtz",
     "introDescription": "Frontend developer eager to collaborate with talented professionals to design and implement cutting-edge web solutions. Proven track record of delivering high-quality projects. Passionate about staying updated with emerging industry trends. Ready to contribute technical expertise and creativity to a dynamic team focused on building impactful digital solutions.",
     "name": "Rotem Avisar",
-    "twitter": "https://x.com/_rtmav",
+    "twitter": "https://x.com/rtmav_labs",
     "discord": "",
     "gitHub": "https://github.com/rtmav-codes",
     "exchangeArt": "",
