@@ -2,21 +2,21 @@
     <div class="flex flex-col justify-center items-center pb-5">
         <div class="flex flex-col lg:w-3/4 w-full">
                 <!-- About -->
-                <div class="flex flex-col col-12 mb-5">
+                <div class="flex flex-col col-12 mb-5" use:scrollReveal={{ delay: 0, y: 20 }}>
                     <div class="bg-black border p-5 rounded-xl flex flex-col justify-center items-center">
                         <!-- Avatar -->
-                        <div class="flex justify-center items-center">
+                        <div class="flex justify-center items-center" use:scrollReveal={{ delay: 100, y: 15 }}>
                             <img src="{general?.avatar?.url}" class="border-2 border-white rounded-full w-36 mb-5" alt="">
                         </div>
 
                         <!-- Name + description -->
-                        <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center">
+                        <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center" use:scrollReveal={{ delay: 200, y: 15 }}>
                             <h1 class="text-center lg:text-left text-2xl font-semibold mb-3">{general?.name}</h1>
                             <p class="mb-5 text-sm">{general?.introDescription}</p>
                         </div>
 
                         <!-- Socials -->
-                        <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4">
+                        <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4" use:scrollReveal={{ delay: 300, y: 15 }}>
                             <div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">
                                 
                                 <!-- Twitter + Discord (Optional) -->
@@ -84,12 +84,12 @@
                 </div>
 
                 <!-- Services -->
-                <div class="flex flex-col">
+                <div class="flex flex-col" use:scrollReveal={{ y: 20 }}>
                     <h1 class="text-2xl mb-3 font-bold">Services</h1>
                 </div>
 
                 <!-- Development Services -->
-                <div class="flex flex-col col-12">
+                <div class="flex flex-col col-12" use:scrollReveal={{ delay: 100, y: 25 }}>
                     <div class="bg-black border rounded-xl px-10 lg:py-10 py-10">
                         <div class="flex flex-col">
                             <div class="flex flex-row justify-start items-center mb-2">
@@ -103,10 +103,10 @@
 
                 <!-- Work Experience -->
                 {#if general?.id === "clbucvbhetqmq0alraz7sbmtz"}
-                    <div class="flex flex-col col-12 mt-5 lg:px-0 px-5">
+                    <div class="flex flex-col col-12 mt-5 lg:px-0 px-5" use:scrollReveal={{ y: 20 }}>
                         <h1 class="text-2xl font-bold mb-3">Work Experience</h1>
                     </div>
-                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4" use:staggerReveal={{ staggerDelay: 150 }}>
                         {#each works as { title, company, image }}
                             <div class="flex flex-row justify-start items-center border rounded-xl overflow-hidden h-100 w-full py-5 px-10">
                                 <div class="flex flex-row flex-center justify-center items-center">
@@ -128,37 +128,39 @@
 
 
                 <!-- Recent Projects -->
-                <h2 class="text-2xl font-bold mt-5 mb-3">Recent Projects</h2>
-                {#each featuredProjects as { title, description, image, demoUrl }}
-                    <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 mb-5">
-                        <div class="flex lg:flex-row flex-col justify-start items-center">
-                            <div class="flex flex-col justify-start items-center lg:w-1/4 w-full">
-                                <div class="flex flex-col justify-start items-start lg:mt-0 mt-5">
-                                    <img 
-                                        src="{image?.url}" 
-                                        class="w-72 h-auto rounded-lg border border-white" 
-                                        alt=""
-                                    />
+                <h2 class="text-2xl font-bold mt-5 mb-3" use:scrollReveal={{ y: 20 }}>Recent Projects</h2>
+                <div use:staggerReveal={{ staggerDelay: 200 }}>
+                    {#each featuredProjects as { title, description, image, demoUrl }}
+                        <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 mb-5">
+                            <div class="flex lg:flex-row flex-col justify-start items-center">
+                                <div class="flex flex-col justify-start items-center lg:w-1/4 w-full">
+                                    <div class="flex flex-col justify-start items-start lg:mt-0 mt-5">
+                                        <img 
+                                            src="{image?.url}" 
+                                            class="w-72 h-auto rounded-lg border border-white" 
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                                <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10">
+                                    <h1 class="lg:text-xl text-lg font-semibold mb-2">{title}</h1>
+                                    <p class="lg:text-sm text-xs mb-2">{description}</p>
+
+                                    {#if demoUrl}
+                                        <a href="{demoUrl}" class="link font-bold" rel="noreferrer">View Project</a>
+                                    {/if}
                                 </div>
                             </div>
-                            <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10">
-                                <h1 class="lg:text-xl text-lg font-semibold mb-2">{title}</h1>
-                                <p class="lg:text-sm text-xs mb-2">{description}</p>
-
-                                {#if demoUrl}
-                                    <a href="{demoUrl}" class="link font-bold" rel="noreferrer">View Project</a>
-                                {/if}
-                            </div>
                         </div>
-                    </div>
-                {/each}
+                    {/each}
+                </div>
 
             <!-- Contact -->
-            <h1 class="text-2xl font-bold mt-5 mb-3">
+            <h1 class="text-2xl font-bold mt-5 mb-3" use:scrollReveal={{ y: 20 }}>
                 CONTACT
             </h1>
     
-            <div class="py-8 mb-5 lg:mb-5 lg:py-16 px-4 lg:mx-auto border rounded-xl border-white">
+            <div class="py-8 mb-5 lg:mb-5 lg:py-16 px-4 lg:mx-auto border rounded-xl border-white" use:scrollReveal={{ delay: 100, y: 30 }}>
                 <div class="flex flex-col justify-center items-center p-10">
                     <p class="mb-8 lg:mb-16 font-light text-center text-white sm:text-xl">
                         Have a question for our team? Feel free to read out and we will get back to you as soon as possible!
@@ -203,6 +205,7 @@
     import media from "$lib/data/media.js";
     import works from "$lib/data/works.js";
     import featuredProjects from "$lib/data/featured-projects";
+    import { scrollReveal, staggerReveal } from "$lib/actions/scrollReveal";
 
     const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
     const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
