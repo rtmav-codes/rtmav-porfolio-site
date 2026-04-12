@@ -1,31 +1,21 @@
-import { _ as bind_props, X as ensure_array_like, Y as attr, T as escape_html, $ as copy_payload, a0 as assign_payload, S as pop, a1 as head, a2 as css_props, Q as push } from "../../../chunks/index.js";
+import { a5 as bind_props, a3 as ensure_array_like, a2 as attr, e as escape_html, a6 as head, a7 as css_props } from "../../../chunks/renderer.js";
 import { L as Lightbox, H as Hamburger } from "../../../chunks/GalleryThumbnail.svelte_svelte_type_style_lang.js";
-function Menu($$payload, $$props) {
-  let links = [
-    "/",
-    "surgicaltheater",
-    "walletguard",
-    "speak2me"
-  ];
+function Menu($$renderer, $$props) {
+  let links = ["/", "surgicaltheater", "walletguard", "speak2me"];
   let open = $$props["open"];
   if (open) {
-    $$payload.out += "<!--[-->";
-    const each_array = ensure_array_like([
-      "Home",
-      "Surgical Theater",
-      "Wallet Guard",
-      "Speak2Me"
-    ]);
-    $$payload.out += `<div class="font-mono bg-black svelte-8ry3ol"><!--[-->`;
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`<div class="font-mono bg-black svelte-1h33erz"><!--[-->`);
+    const each_array = ensure_array_like(["Home", "Surgical Theater", "Wallet Guard", "Speak2Me"]);
     for (let i = 0, $$length = each_array.length; i < $$length; i++) {
       let link = each_array[i];
-      $$payload.out += `<a${attr("href", links[i])} style="text-decoration:none" class="svelte-8ry3ol"><p class="svelte-8ry3ol">${escape_html(link)}</p></a>`;
+      $$renderer.push(`<a${attr("href", links[i])} style="text-decoration:none" class="svelte-1h33erz"><p class="svelte-1h33erz">${escape_html(link)}</p></a>`);
     }
-    $$payload.out += `<!--]--></div> <hr>`;
+    $$renderer.push(`<!--]--></div> <hr/>`);
   } else {
-    $$payload.out += "<!--[!-->";
+    $$renderer.push("<!--[-1-->");
   }
-  $$payload.out += `<!--]-->`;
+  $$renderer.push(`<!--]-->`);
   bind_props($$props, { open });
 }
 const media = [
@@ -109,30 +99,35 @@ const mediaBefore = [
     }
   }
 ];
-function _page($$payload, $$props) {
-  push();
-  let open = false;
-  const mediaBeforeCol1 = mediaBefore.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaBeforeCol2 = mediaBefore.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaBeforeCol3 = mediaBefore.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  let $$settled = true;
-  let $$inner_payload;
-  function $$render_inner($$payload2) {
-    const each_array = ensure_array_like(mediaBeforeCol1);
-    const each_array_1 = ensure_array_like(mediaBeforeCol2);
-    const each_array_2 = ensure_array_like(mediaBeforeCol3);
-    const each_array_3 = ensure_array_like(mediaCol1);
-    const each_array_4 = ensure_array_like(mediaCol2);
-    const each_array_5 = ensure_array_like(mediaCol3);
-    head($$payload2, ($$payload3) => {
-      $$payload3.out += `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/base.css"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/types/spin.css">`;
-    });
-    $$payload2.out += `<div class="flex justify-center items-center pt-4 bg-black font-mono">`;
-    css_props($$payload2, true, { "--color": "white" }, () => {
-      Hamburger($$payload2, {
+function _page($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let open = false;
+    const mediaBeforeCol1 = mediaBefore.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaBeforeCol2 = mediaBefore.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaBeforeCol3 = mediaBefore.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    let $$settled = true;
+    let $$inner_renderer;
+    function $$render_inner($$renderer3) {
+      head("1uvzknk", $$renderer3, ($$renderer4) => {
+        $$renderer4.push(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/base.css"/> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/types/spin.css"/>`);
+      });
+      $$renderer3.push(`<div class="flex justify-center items-center pt-4 bg-black font-mono">`);
+      css_props($$renderer3, true, { "--color": "white" }, () => {
+        Hamburger($$renderer3, {
+          get open() {
+            return open;
+          },
+          set open($$value) {
+            open = $$value;
+            $$settled = false;
+          }
+        });
+      });
+      $$renderer3.push(`</div> `);
+      Menu($$renderer3, {
         get open() {
           return open;
         },
@@ -141,18 +136,7 @@ function _page($$payload, $$props) {
           $$settled = false;
         }
       });
-    });
-    $$payload2.out += `</div> `;
-    Menu($$payload2, {
-      get open() {
-        return open;
-      },
-      set open($$value) {
-        open = $$value;
-        $$settled = false;
-      }
-    });
-    $$payload2.out += `<!----> <div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5"><div class="flex flex-col justify-center items-center"><img src="/work/st-logo.png" class="w-36 mt-10" alt="st logo"></div> <div class="flex flex-col justify-center items-center"><h1 class="text-white text-5xl mt-10 text-center">Surgical Theater</h1> <h2 class="text-white text-2xl mt-2 text-center">Legacy System Redesign</h2></div> <div class="flex flex-col lg:w-3/4 w-full mt-10"><div class="flex flex-col justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10"><div class="flex flex-col justify-start items-start w-5/6"><h1 class="text-white lg:text-xl text-md mt-10 font-semibold">My Role: UX Researcher and UX/UI Designer</h1> <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">Project Overview:</h2> <p class="text-white text-md">I collaborated with the team to design and 
+      $$renderer3.push(`<!----> <div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5"><div class="flex flex-col justify-center items-center"><img src="/work/st-logo.png" class="w-36 mt-10" alt="st logo"/></div> <div class="flex flex-col justify-center items-center"><h1 class="text-white text-5xl mt-10 text-center">Surgical Theater</h1> <h2 class="text-white text-2xl mt-2 text-center">Legacy System Redesign</h2></div> <div class="flex flex-col lg:w-3/4 w-full mt-10"><div class="flex flex-col justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10"><div class="flex flex-col justify-start items-start w-5/6"><h1 class="text-white lg:text-xl text-md mt-10 font-semibold">My Role: UX Researcher and UX/UI Designer</h1> <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">Project Overview:</h2> <p class="text-white text-md">I collaborated with the team to design and 
                     develop cutting-edge Med Tech Dashboards and AR/VR Surgery Simulators for HOAG Hospital 
                     in Newport Beach, CA. The project aimed to create a seamless user experience for neurosurgeons, 
                     incorporating advanced technologies to enhance surgical training and planning.</p> <h2 class="text-white text-lg mt-5 font-semibold">Problem Statement:</h2> <p class="text-white text-md">Neurosurgeons at HOAG Hospital faced challenges in accessing and interpreting complex medical data, 
@@ -162,93 +146,99 @@ function _page($$payload, $$props) {
                     built by engineers for engineers. The redesign aimed to create a more intuitive and user-friendly interface 
                     that would allow neurosurgeons to access and analyze medical data more effectively, and to provide a more 
                     immersive and realistic surgical training experience through AR/VR simulations.</p> <h2 class="text-white text-lg mt-5 font-semibold">Solution:</h2> <p class="text-white text-md">The solution focused on the development of intuitive Med Tech Dashboards and AR/VR Surgery Simulators 
-                    tailored to the specific needs outlined by neurosurgeons. Key components of the solution include:</p> <ol class="list-decimal text-white text-md font-semibold lg:pl-10 pl-6 lg:mx-24 mx-1"><li><h3 class="mt-5 text-sm">User-Centric Design:</h3> <ul class="font-normal text-xs"><li>Conducted user research and collaborated closely with neurosurgeons to understand their workflow and preferences.</li> <li>Designed an intuitive and user-friendly interface for the Med Tech Dashboards, ensuring easy navigation, quick access to critical medical and as an intuitive way to plan for surgery in the simulator.</li></ul></li> <li><h3 class="mt-2 text-sm">Med Tech Dashboards:</h3> <ul class="font-normal text-xs"><li>Aggregated diverse medical data sources into a unified dashboard, providing neurosurgeons with a comprehensive view of patient information, diagnostics, and surgical plans.</li> <li>Implemented personalized dashboards to cater to individual surgeon preferences.</li></ul></li> <li><h3 class="mt-2 text-sm">AR/VR Surgery Simulators:</h3> <ul class="font-normal text-xs"><li>Developed an interface for an immersive AR/VR simulations that replicate real surgical scenarios, allowing neurosurgeons to practice and refine their skills in a risk-free environment.</li> <li>Integrated realistic visuals to enhance the simulation experience and bridge the gap between theoretical knowledge and practical application.</li></ul></li></ol> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let { coverImage } = each_array[$$index];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
+                    tailored to the specific needs outlined by neurosurgeons. Key components of the solution include:</p> <ol class="list-decimal text-white text-md font-semibold lg:pl-10 pl-6 lg:mx-24 mx-1"><li><h3 class="mt-5 text-sm">User-Centric Design:</h3> <ul class="font-normal text-xs"><li>Conducted user research and collaborated closely with neurosurgeons to understand their workflow and preferences.</li> <li>Designed an intuitive and user-friendly interface for the Med Tech Dashboards, ensuring easy navigation, quick access to critical medical and as an intuitive way to plan for surgery in the simulator.</li></ul></li> <li><h3 class="mt-2 text-sm">Med Tech Dashboards:</h3> <ul class="font-normal text-xs"><li>Aggregated diverse medical data sources into a unified dashboard, providing neurosurgeons with a comprehensive view of patient information, diagnostics, and surgical plans.</li> <li>Implemented personalized dashboards to cater to individual surgeon preferences.</li></ul></li> <li><h3 class="mt-2 text-sm">AR/VR Surgery Simulators:</h3> <ul class="font-normal text-xs"><li>Developed an interface for an immersive AR/VR simulations that replicate real surgical scenarios, allowing neurosurgeons to practice and refine their skills in a risk-free environment.</li> <li>Integrated realistic visuals to enhance the simulation experience and bridge the gap between theoretical knowledge and practical application.</li></ul></li></ol> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array = ensure_array_like(mediaBeforeCol1);
+      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+        let { coverImage } = each_array[$$index];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_1 = ensure_array_like(mediaBeforeCol2);
+      for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+        let { coverImage } = each_array_1[$$index_1];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_2 = ensure_array_like(mediaBeforeCol3);
+      for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
+        let { coverImage } = each_array_2[$$index_2];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div></div> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">After:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_3 = ensure_array_like(mediaCol1);
+      for (let $$index_3 = 0, $$length = each_array_3.length; $$index_3 < $$length; $$index_3++) {
+        let { coverImage } = each_array_3[$$index_3];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_4 = ensure_array_like(mediaCol2);
+      for (let $$index_4 = 0, $$length = each_array_4.length; $$index_4 < $$length; $$index_4++) {
+        let { coverImage } = each_array_4[$$index_4];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_5 = ensure_array_like(mediaCol3);
+      for (let $$index_5 = 0, $$length = each_array_5.length; $$index_5 < $$length; $$index_5++) {
+        let { coverImage } = each_array_5[$$index_5];
+        $$renderer3.push(`<div class="p-3">`);
+        Lightbox($$renderer3, {
+          enableClickToClose: true,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+          },
+          $$slots: { default: true }
+        });
+        $$renderer3.push(`<!----></div>`);
+      }
+      $$renderer3.push(`<!--]--></div></div></div></div></div></div>`);
     }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-      let { coverImage } = each_array_1[$$index_1];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
-      let { coverImage } = each_array_2[$$index_2];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
-    }
-    $$payload2.out += `<!--]--></div></div> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">After:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_3 = 0, $$length = each_array_3.length; $$index_3 < $$length; $$index_3++) {
-      let { coverImage } = each_array_3[$$index_3];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_4 = 0, $$length = each_array_4.length; $$index_4 < $$length; $$index_4++) {
-      let { coverImage } = each_array_4[$$index_4];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_5 = 0, $$length = each_array_5.length; $$index_5 < $$length; $$index_5++) {
-      let { coverImage } = each_array_5[$$index_5];
-      $$payload2.out += `<div class="p-3">`;
-      Lightbox($$payload2, {
-        enableClickToClose: true,
-        children: ($$payload3) => {
-          $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-        },
-        $$slots: { default: true }
-      });
-      $$payload2.out += `<!----></div>`;
-    }
-    $$payload2.out += `<!--]--></div></div></div></div></div></div>`;
-  }
-  do {
-    $$settled = true;
-    $$inner_payload = copy_payload($$payload);
-    $$render_inner($$inner_payload);
-  } while (!$$settled);
-  assign_payload($$payload, $$inner_payload);
-  pop();
+    do {
+      $$settled = true;
+      $$inner_renderer = $$renderer2.copy();
+      $$render_inner($$inner_renderer);
+    } while (!$$settled);
+    $$renderer2.subsume($$inner_renderer);
+  });
 }
 export {
   _page as default

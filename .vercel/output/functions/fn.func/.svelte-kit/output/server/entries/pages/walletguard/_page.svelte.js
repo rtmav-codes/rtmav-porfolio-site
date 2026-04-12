@@ -1,31 +1,21 @@
-import { _ as bind_props, X as ensure_array_like, Y as attr, T as escape_html, a3 as rest_props, a4 as fallback, a5 as spread_attributes, a6 as slot, S as pop, a7 as sanitize_props, Q as push, $ as copy_payload, a0 as assign_payload, a2 as css_props } from "../../../chunks/index.js";
+import { a5 as bind_props, a3 as ensure_array_like, a2 as attr, e as escape_html, a8 as rest_props, a9 as fallback, aa as attributes, ab as clsx, ac as slot, ad as sanitize_props, a7 as css_props } from "../../../chunks/renderer.js";
 import { L as Lightbox, H as Hamburger } from "../../../chunks/GalleryThumbnail.svelte_svelte_type_style_lang.js";
-function Menu($$payload, $$props) {
-  let links = [
-    "/",
-    "surgicaltheater",
-    "walletguard",
-    "speak2me"
-  ];
+function Menu($$renderer, $$props) {
+  let links = ["/", "surgicaltheater", "walletguard", "speak2me"];
   let open = $$props["open"];
   if (open) {
-    $$payload.out += "<!--[-->";
-    const each_array = ensure_array_like([
-      "Home",
-      "Surgical Theater",
-      "Wallet Guard",
-      "Speak2Me"
-    ]);
-    $$payload.out += `<div class="font-mono bg-black svelte-8ry3ol"><!--[-->`;
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`<div class="font-mono bg-black svelte-u8hwim"><!--[-->`);
+    const each_array = ensure_array_like(["Home", "Surgical Theater", "Wallet Guard", "Speak2Me"]);
     for (let i = 0, $$length = each_array.length; i < $$length; i++) {
       let link = each_array[i];
-      $$payload.out += `<a${attr("href", links[i])} style="text-decoration:none" class="svelte-8ry3ol"><p class="svelte-8ry3ol">${escape_html(link)}</p></a>`;
+      $$renderer.push(`<a${attr("href", links[i])} style="text-decoration:none" class="svelte-u8hwim"><p class="svelte-u8hwim">${escape_html(link)}</p></a>`);
     }
-    $$payload.out += `<!--]--></div> <hr>`;
+    $$renderer.push(`<!--]--></div> <hr/>`);
   } else {
-    $$payload.out += "<!--[!-->";
+    $$renderer.push("<!--[-1-->");
   }
-  $$payload.out += `<!--]-->`;
+  $$renderer.push(`<!--]-->`);
   bind_props($$props, { open });
 }
 const CLASS_PART_SEPARATOR = "-";
@@ -2486,27 +2476,21 @@ const getDefaultConfig = () => {
   };
 };
 const twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
-function Video($$payload, $$props) {
+function Video($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
-  const $$restProps = rest_props($$sanitized_props, [
-    "src",
-    "type",
-    "trackSrc",
-    "srclang",
-    "label"
-  ]);
-  push();
-  let src = $$props["src"];
-  let type = fallback($$props["type"], "video/mp4");
-  let trackSrc = fallback($$props["trackSrc"], "");
-  let srclang = fallback($$props["srclang"], "en");
-  let label = fallback($$props["label"], "english_captions");
-  let videoClass = twMerge($$sanitized_props.class);
-  $$payload.out += `<video${spread_attributes({ ...$$restProps, class: videoClass })}><source${attr("src", src)}${attr("type", type)}> <!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----> <track${attr("src", trackSrc)} kind="captions"${attr("srclang", srclang)}${attr("label", label)}> Your browser does not support the video tag.</video>`;
-  bind_props($$props, { src, type, trackSrc, srclang, label });
-  pop();
+  const $$restProps = rest_props($$sanitized_props, ["src", "type", "trackSrc", "srclang", "label"]);
+  $$renderer.component(($$renderer2) => {
+    let src = $$props["src"];
+    let type = fallback($$props["type"], "video/mp4");
+    let trackSrc = fallback($$props["trackSrc"], "");
+    let srclang = fallback($$props["srclang"], "en");
+    let label = fallback($$props["label"], "english_captions");
+    let videoClass = twMerge($$sanitized_props.class);
+    $$renderer2.push(`<video${attributes({ ...$$restProps, class: clsx(videoClass) })}><source${attr("src", src)}${attr("type", type)}/> <!--[-->`);
+    slot($$renderer2, $$props, "default", {});
+    $$renderer2.push(`<!--]--> <track${attr("src", trackSrc)} kind="captions"${attr("srclang", srclang)}${attr("label", label)}/> Your browser does not support the video tag.</video>`);
+    bind_props($$props, { src, type, trackSrc, srclang, label });
+  });
 }
 const media = [
   {
@@ -2572,27 +2556,32 @@ const mediaBefore = [
     }
   }
 ];
-function _page($$payload, $$props) {
-  push();
-  let open = false;
-  const mediaBeforeCol1 = mediaBefore.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaBeforeCol2 = mediaBefore.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaBeforeCol3 = mediaBefore.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
-  let $$settled = true;
-  let $$inner_payload;
-  function $$render_inner($$payload2) {
-    const each_array = ensure_array_like(mediaBeforeCol1);
-    const each_array_1 = ensure_array_like(mediaBeforeCol2);
-    const each_array_2 = ensure_array_like(mediaBeforeCol3);
-    const each_array_3 = ensure_array_like(mediaCol1);
-    const each_array_4 = ensure_array_like(mediaCol2);
-    const each_array_5 = ensure_array_like(mediaCol3);
-    $$payload2.out += `<div class="flex justify-center items-center pt-4 bg-black font-mono">`;
-    css_props($$payload2, true, { "--color": "white" }, () => {
-      Hamburger($$payload2, {
+function _page($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let open = false;
+    const mediaBeforeCol1 = mediaBefore.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaBeforeCol2 = mediaBefore.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaBeforeCol3 = mediaBefore.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order: a = 0 }, { order: b = 0 }) => a > b ? 1 : -1);
+    let $$settled = true;
+    let $$inner_renderer;
+    function $$render_inner($$renderer3) {
+      $$renderer3.push(`<div class="flex justify-center items-center pt-4 bg-black font-mono">`);
+      css_props($$renderer3, true, { "--color": "white" }, () => {
+        Hamburger($$renderer3, {
+          get open() {
+            return open;
+          },
+          set open($$value) {
+            open = $$value;
+            $$settled = false;
+          }
+        });
+      });
+      $$renderer3.push(`</div> `);
+      Menu($$renderer3, {
         get open() {
           return open;
         },
@@ -2601,18 +2590,7 @@ function _page($$payload, $$props) {
           $$settled = false;
         }
       });
-    });
-    $$payload2.out += `</div> `;
-    Menu($$payload2, {
-      get open() {
-        return open;
-      },
-      set open($$value) {
-        open = $$value;
-        $$settled = false;
-      }
-    });
-    $$payload2.out += `<!----> <div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5"><div class="flex flex-col justify-center items-center"><img src="/work/wallet-guard.png" class="w-36 mt-10" alt="s2mlogo"></div> <h1 class="text-white text-5xl mt-10">WalletGuard</h1> <h2 class="text-white text-2xl mt-2 text-center">Webflow Landing Page</h2> <div class="flex flex-col lg:w-3/4 w-full mt-10"><div class="flex flex-col justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10"><div class="flex flex-col justify-start items-start w-5/6"><h1 class="text-white lg:text-xl text-md mt-10 font-semibold">My Role: Frontend Developer</h1> <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">Project Overview:</h2> <p class="text-white text-md">I took on the responsibility of crafting a compelling landing page using Webflow for a Web3 
+      $$renderer3.push(`<!----> <div class="w-screen h-auto bg-black flex flex-col justify-center items-center font-mono lg:px-0 px-5"><div class="flex flex-col justify-center items-center"><img src="/work/wallet-guard.png" class="w-36 mt-10" alt="s2mlogo"/></div> <h1 class="text-white text-5xl mt-10">WalletGuard</h1> <h2 class="text-white text-2xl mt-2 text-center">Webflow Landing Page</h2> <div class="flex flex-col lg:w-3/4 w-full mt-10"><div class="flex flex-col justify-center items-center bg-black border rounded-xl lg:px-10 px-6 lg:py-0 py-10"><div class="flex flex-col justify-start items-start w-5/6"><h1 class="text-white lg:text-xl text-md mt-10 font-semibold">My Role: Frontend Developer</h1> <h2 class="text-white lg:text-lg text-md mt-5 font-semibold">Project Overview:</h2> <p class="text-white text-md">I took on the responsibility of crafting a compelling landing page using Webflow for a Web3 
                     company dedicated to enhancing the safety of the crypto space. The primary objective was to 
                     communicate the company's mission to create a more secure environment by preventing common 
                     scams like wallet drainers and honey pots.</p> <h2 class="text-white text-lg mt-5 font-semibold">Problem Statement:</h2> <p class="text-white text-md">Speech therapists often struggle to track and analyze facial movements during speech 
@@ -2628,153 +2606,159 @@ function _page($$payload, $$props) {
                                 confidence in the speech therapy company's expertise and reliability.</li> <li>Utilized a clean and professional design aesthetic to convey a sense of security and trustworthiness.</li></ul></li> <li><h3 class="mt-2 text-sm">Billing Integration:</h3> <ul class="font-normal text-xs"><li>Streamlined billing processes by integrating a billing module within the app, reducing the likelihood 
                                 of errors.</li></ul> <ul class="font-normal text-xs"><li>Provided a seamless transition from therapy sessions to billing, saving time and improving the overall 
                                 administrative experience for therapists.</li></ul></li> <li><h3 class="mt-2 text-sm">Gamification:</h3> <ul class="font-normal text-xs"><li>To assist in adoption and retention of users we set out to gamify the exercises.</li></ul> <ul class="font-normal text-xs"><li>The goal was to make interactive excercises that were challenging but also fun with engaging graphics 
-                                to make the patients excited to log in and complete their excercises.</li></ul></li></ol> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let { video, coverImage } = each_array[$$index];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+                                to make the patients excited to log in and complete their excercises.</li></ul></li></ol> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">Before:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array = ensure_array_like(mediaBeforeCol1);
+      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+        let { video, coverImage } = each_array[$$index];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-      let { video, coverImage } = each_array_1[$$index_1];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_1 = ensure_array_like(mediaBeforeCol2);
+      for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+        let { video, coverImage } = each_array_1[$$index_1];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
-      let { video, coverImage } = each_array_2[$$index_2];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_2 = ensure_array_like(mediaBeforeCol3);
+      for (let $$index_2 = 0, $$length = each_array_2.length; $$index_2 < $$length; $$index_2++) {
+        let { video, coverImage } = each_array_2[$$index_2];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
-    }
-    $$payload2.out += `<!--]--></div></div> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">After:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_3 = 0, $$length = each_array_3.length; $$index_3 < $$length; $$index_3++) {
-      let { video, coverImage } = each_array_3[$$index_3];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+      $$renderer3.push(`<!--]--></div></div> <h3 class="text-white text-xl mt-5 ml-5 font-semibold">After:</h3> <div class="grid lg:grid-cols-3 grid-cols-1"><div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_3 = ensure_array_like(mediaCol1);
+      for (let $$index_3 = 0, $$length = each_array_3.length; $$index_3 < $$length; $$index_3++) {
+        let { video, coverImage } = each_array_3[$$index_3];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_4 = 0, $$length = each_array_4.length; $$index_4 < $$length; $$index_4++) {
-      let { video, coverImage } = each_array_4[$$index_4];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_4 = ensure_array_like(mediaCol2);
+      for (let $$index_4 = 0, $$length = each_array_4.length; $$index_4 < $$length; $$index_4++) {
+        let { video, coverImage } = each_array_4[$$index_4];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
-    }
-    $$payload2.out += `<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`;
-    for (let $$index_5 = 0, $$length = each_array_5.length; $$index_5 < $$length; $$index_5++) {
-      let { video, coverImage } = each_array_5[$$index_5];
-      $$payload2.out += `<div class="p-3">`;
-      if (video) {
-        $$payload2.out += "<!--[-->";
-        Video($$payload2, {
-          src: video?.url,
-          class: "w-100 border border-white rounded-xl",
-          controls: true
-        });
-      } else {
-        $$payload2.out += "<!--[!-->";
-        Lightbox($$payload2, {
-          enableClickToClose: true,
-          children: ($$payload3) => {
-            $$payload3.out += `<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt="">`;
-          },
-          $$slots: { default: true }
-        });
+      $$renderer3.push(`<!--]--></div> <div class="flex flex-col col-12 col-md-4"><!--[-->`);
+      const each_array_5 = ensure_array_like(mediaCol3);
+      for (let $$index_5 = 0, $$length = each_array_5.length; $$index_5 < $$length; $$index_5++) {
+        let { video, coverImage } = each_array_5[$$index_5];
+        $$renderer3.push(`<div class="p-3">`);
+        if (video) {
+          $$renderer3.push("<!--[0-->");
+          Video($$renderer3, {
+            src: video?.url,
+            class: "w-100 border border-white rounded-xl",
+            controls: true
+          });
+        } else {
+          $$renderer3.push("<!--[-1-->");
+          Lightbox($$renderer3, {
+            enableClickToClose: true,
+            children: ($$renderer4) => {
+              $$renderer4.push(`<img${attr("src", coverImage?.url)} class="w-100 border border-white rounded-xl" alt=""/>`);
+            },
+            $$slots: { default: true }
+          });
+        }
+        $$renderer3.push(`<!--]--></div>`);
       }
-      $$payload2.out += `<!--]--></div>`;
+      $$renderer3.push(`<!--]--></div></div></div></div></div></div>`);
     }
-    $$payload2.out += `<!--]--></div></div></div></div></div></div>`;
-  }
-  do {
-    $$settled = true;
-    $$inner_payload = copy_payload($$payload);
-    $$render_inner($$inner_payload);
-  } while (!$$settled);
-  assign_payload($$payload, $$inner_payload);
-  pop();
+    do {
+      $$settled = true;
+      $$inner_renderer = $$renderer2.copy();
+      $$render_inner($$inner_renderer);
+    } while (!$$settled);
+    $$renderer2.subsume($$inner_renderer);
+  });
 }
 export {
   _page as default

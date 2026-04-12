@@ -1,5 +1,51 @@
-import { V as getContext, T as escape_html, S as pop, Q as push } from "../../chunks/index.js";
-import { u as updated, s as stores } from "../../chunks/client.js";
+import { g as getContext, e as escape_html } from "../../chunks/renderer.js";
+import { u as updated } from "../../chunks/state.svelte.js";
+import { w as writable } from "../../chunks/index.js";
+import "@sveltejs/kit/internal";
+import "../../chunks/exports.js";
+import "../../chunks/utils.js";
+import "@sveltejs/kit/internal/server";
+import "../../chunks/root.js";
+function notifiable_store(value) {
+  const store = writable(value);
+  let ready = true;
+  function notify() {
+    ready = true;
+    store.update((val) => val);
+  }
+  function set(new_value) {
+    ready = false;
+    store.set(new_value);
+  }
+  function subscribe(run) {
+    let old_value;
+    return store.subscribe((new_value) => {
+      if (old_value === void 0 || ready && new_value !== old_value) {
+        run(old_value = new_value);
+      }
+    });
+  }
+  return { notify, set, subscribe };
+}
+function create_updated_store() {
+  const { set, subscribe } = writable(false);
+  {
+    return {
+      subscribe,
+      // eslint-disable-next-line @typescript-eslint/require-await
+      check: async () => false
+    };
+  }
+}
+const stores = {
+  url: /* @__PURE__ */ notifiable_store({}),
+  page: /* @__PURE__ */ notifiable_store({}),
+  navigating: /* @__PURE__ */ writable(
+    /** @type {import('@sveltejs/kit').Navigation | null} */
+    null
+  ),
+  updated: /* @__PURE__ */ create_updated_store()
+};
 ({
   get current() {
     return updated.current;
@@ -36,10 +82,10 @@ const page$1 = {
   }
 };
 const page = page$1;
-function Error$1($$payload, $$props) {
-  push();
-  $$payload.out += `<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`;
-  pop();
+function Error$1($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    $$renderer2.push(`<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`);
+  });
 }
 export {
   Error$1 as default

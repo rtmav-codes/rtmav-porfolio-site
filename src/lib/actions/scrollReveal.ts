@@ -14,7 +14,8 @@ export const scrollReveal: Action<HTMLElement, ScrollRevealOptions | undefined> 
 ) => {
 	const {
 		delay = 0,
-		duration = 600,
+		duration = 500,
+		easing = 'cubic-bezier(0.16, 1, 0.3, 1)',
 		threshold = 0.1,
 		y = 30
 	} = options;
@@ -22,7 +23,8 @@ export const scrollReveal: Action<HTMLElement, ScrollRevealOptions | undefined> 
 	// Initial state - hidden
 	node.style.opacity = '0';
 	node.style.transform = `translateY(${y}px)`;
-	node.style.transition = `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`;
+	node.style.willChange = 'opacity, transform';
+	node.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
 	node.style.transitionDelay = `${delay}ms`;
 
 	const observer = new IntersectionObserver(
@@ -39,7 +41,7 @@ export const scrollReveal: Action<HTMLElement, ScrollRevealOptions | undefined> 
 		},
 		{
 			threshold,
-			rootMargin: '0px 0px -50px 0px'
+			rootMargin: '0px'
 		}
 	);
 
@@ -65,7 +67,8 @@ export const staggerReveal: Action<HTMLElement, { staggerDelay?: number; childSe
 		const el = child as HTMLElement;
 		el.style.opacity = '0';
 		el.style.transform = 'translateY(30px)';
-		el.style.transition = 'opacity 500ms ease-out, transform 500ms ease-out';
+		el.style.willChange = 'opacity, transform';
+		el.style.transition = 'opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
 		el.style.transitionDelay = `${index * staggerDelay}ms`;
 	});
 
@@ -84,7 +87,7 @@ export const staggerReveal: Action<HTMLElement, { staggerDelay?: number; childSe
 		},
 		{
 			threshold: 0.1,
-			rootMargin: '0px 0px -50px 0px'
+			rootMargin: '0px'
 		}
 	);
 

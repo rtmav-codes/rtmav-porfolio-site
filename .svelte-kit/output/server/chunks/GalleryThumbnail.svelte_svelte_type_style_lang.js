@@ -1,53 +1,47 @@
-import { a8 as current_component, Q as push, Y as attr, Z as stringify, _ as bind_props, S as pop, a3 as rest_props, a5 as spread_attributes, a6 as slot, a7 as sanitize_props, a4 as fallback, a9 as store_get, T as escape_html, aa as unsubscribe_stores, ab as sanitize_slots, ac as spread_props } from "./index.js";
-import { w as writable } from "./index2.js";
+import { ae as ssr_context, a2 as attr, af as attr_class, a5 as bind_props, a4 as stringify, a8 as rest_props, aa as attributes, ac as slot, ad as sanitize_props, a9 as fallback, ag as store_get, e as escape_html, ah as unsubscribe_stores, ai as sanitize_slots, aj as spread_props } from "./renderer.js";
+import { w as writable } from "./index.js";
 function onDestroy(fn) {
-  var context = (
-    /** @type {Component} */
-    current_component
-  );
-  (context.d ??= []).push(fn);
+  /** @type {SSRContext} */
+  ssr_context.r.on_destroy(fn);
 }
-function Hamburger($$payload, $$props) {
-  push();
-  let {
-    open = false,
-    type = "spin",
-    title = "Hamburger menu",
-    ariaControls,
-    ariaLabel = title,
-    onclick
-  } = $$props;
-  $$payload.out += `<button${attr("title", title)}${attr("aria-label", ariaLabel)}${attr("aria-controls", ariaControls)}${attr("aria-expanded", open)}${attr("class", `hamburger hamburger--${stringify(type)} svelte-jas1sv ${stringify([open ? "is-active" : ""].filter(Boolean).join(" "))}`)}><span class="hamburger-box svelte-jas1sv"><span class="hamburger-inner svelte-jas1sv"></span></span></button>`;
-  bind_props($$props, { open });
-  pop();
+function Hamburger($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let {
+      open = false,
+      type = "spin",
+      title = "Hamburger menu",
+      ariaControls,
+      ariaLabel = title,
+      onclick
+    } = $$props;
+    $$renderer2.push(`<button${attr("title", title)}${attr("aria-label", ariaLabel)}${attr("aria-controls", ariaControls)}${attr("aria-expanded", open)}${attr_class(`hamburger hamburger--${stringify(type)}`, "svelte-1e48d9h", { "is-active": open })}><span class="hamburger-box svelte-1e48d9h"><span class="hamburger-inner svelte-1e48d9h"></span></span></button>`);
+    bind_props($$props, { open });
+  });
 }
-function LightboxThumbnail($$payload, $$props) {
+function LightboxThumbnail($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
   const $$restProps = rest_props($$sanitized_props, []);
-  $$payload.out += `<div${spread_attributes({ "aria-label": "thumbnail", ...$$restProps }, {
-    "svelte-hpqpx9": true,
-    "svelte-lightbox-thumbnail": true
-  })}><!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----></div>`;
+  $$renderer.push(`<div${attributes({ "aria-label": "thumbnail", ...$$restProps }, "svelte-1p9kpoi", { "svelte-lightbox-thumbnail": true })}><!--[-->`);
+  slot($$renderer, $$props, "default", {});
+  $$renderer.push(`<!--]--></div>`);
 }
-function BodyChild($$payload, $$props) {
+function BodyChild($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
   const $$restProps = rest_props($$sanitized_props, []);
-  push();
-  let child;
-  const removeTarget = () => {
-    if (typeof document !== "undefined") {
-      document.body.removeChild(child);
-    }
-  };
-  onDestroy(removeTarget);
-  $$payload.out += `<div${spread_attributes({ ...$$restProps })}><!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----></div>`;
-  pop();
+  $$renderer.component(($$renderer2) => {
+    let child;
+    const removeTarget = () => {
+      if (typeof document !== "undefined") {
+        document.body.removeChild(child);
+      }
+    };
+    onDestroy(removeTarget);
+    $$renderer2.push(`<div${attributes({ ...$$restProps })}><!--[-->`);
+    slot($$renderer2, $$props, "default", {});
+    $$renderer2.push(`<!--]--></div>`);
+  });
 }
-function LightboxHeader($$payload, $$props) {
+function LightboxHeader($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
   const $$restProps = rest_props($$sanitized_props, [
     "closeButtonProps",
@@ -55,49 +49,37 @@ function LightboxHeader($$payload, $$props) {
     "enableEscapeToClose",
     "imagePreset"
   ]);
-  push();
-  let closeButtonProps = fallback($$props["closeButtonProps"], () => ({}), true);
-  let showCloseButton = $$props["showCloseButton"];
-  let enableEscapeToClose = $$props["enableEscapeToClose"];
-  let imagePreset = $$props["imagePreset"];
-  $$payload.out += `<div${spread_attributes(
-    {
-      class: "svelte-lightbox-header",
-      ...$$restProps
-    },
-    {
-      "svelte-5qj430": true,
-      fullscreen: imagePreset === "fullscreen"
+  $$renderer.component(($$renderer2) => {
+    let closeButtonProps = fallback($$props["closeButtonProps"], () => ({}), true);
+    let showCloseButton = $$props["showCloseButton"];
+    let enableEscapeToClose = $$props["enableEscapeToClose"];
+    let imagePreset = $$props["imagePreset"];
+    $$renderer2.push(`<div${attributes({ class: "svelte-lightbox-header", ...$$restProps }, "svelte-zwutnb", { fullscreen: imagePreset === "fullscreen" })}>`);
+    if (showCloseButton) {
+      $$renderer2.push("<!--[0-->");
+      $$renderer2.push(`<button${attributes({ ...closeButtonProps }, "svelte-zwutnb", { fullscreen: imagePreset === "fullscreen" })}>×</button>`);
+    } else {
+      $$renderer2.push("<!--[-1-->");
     }
-  )}>`;
-  if (showCloseButton) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<button${spread_attributes({ ...closeButtonProps }, {
-      "svelte-5qj430": true,
-      fullscreen: imagePreset === "fullscreen"
-    })}>×</button>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--></div>`;
-  bind_props($$props, {
-    closeButtonProps,
-    showCloseButton,
-    enableEscapeToClose,
-    imagePreset
+    $$renderer2.push(`<!--]--></div>`);
+    bind_props($$props, {
+      closeButtonProps,
+      showCloseButton,
+      enableEscapeToClose,
+      imagePreset
+    });
   });
-  pop();
 }
-function LightboxBody($$payload, $$props) {
+function LightboxBody($$renderer, $$props) {
   let imagePreset = $$props["imagePreset"];
   let enableImageExpand = $$props["enableImageExpand"];
-  $$payload.out += `<div${attr("class", `svelte-lightbox-body svelte-fqwdsi ${stringify([
-    imagePreset === "fullscreen" ? "fullscreen" : "",
-    imagePreset === "scroll" ? "scroll" : "",
-    enableImageExpand ? "expand" : ""
-  ].filter(Boolean).join(" "))}`)}><!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----></div>`;
+  $$renderer.push(`<div${attr_class("svelte-lightbox-body svelte-3fqafk", void 0, {
+    "fullscreen": imagePreset === "fullscreen",
+    "scroll": imagePreset === "scroll",
+    "expand": enableImageExpand
+  })}><!--[-->`);
+  slot($$renderer, $$props, "default", {});
+  $$renderer.push(`<!--]--></div>`);
   bind_props($$props, { imagePreset, enableImageExpand });
 }
 const i18n = writable({
@@ -105,14 +87,9 @@ const i18n = writable({
     return `Image ${activeImage + 1} of ${imageCount}`;
   }
 });
-function LightboxFooter($$payload, $$props) {
+function LightboxFooter($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
-  const $$restProps = rest_props($$sanitized_props, [
-    "imagePreset",
-    "title",
-    "description",
-    "gallery"
-  ]);
+  const $$restProps = rest_props($$sanitized_props, ["imagePreset", "title", "description", "gallery"]);
   var $$store_subs;
   let localizedGalleryCounter;
   let imagePreset = $$props["imagePreset"];
@@ -125,185 +102,176 @@ function LightboxFooter($$payload, $$props) {
     }
   };
   localizedGalleryCounter = generateLocalizedGalleryCounter(store_get($$store_subs ??= {}, "$i18n", i18n), gallery);
-  $$payload.out += `<div${spread_attributes(
-    {
-      class: "svelte-lightbox-footer",
-      ...$$restProps
-    },
-    {
-      "svelte-6fc1ka": true,
-      fullscreen: imagePreset === "fullscreen"
-    }
-  )}><h2>${escape_html(title)}</h2> <h5>${escape_html(description)}</h5> `;
+  $$renderer.push(`<div${attributes({ class: "svelte-lightbox-footer", ...$$restProps }, "svelte-1ryiemp", { fullscreen: imagePreset === "fullscreen" })}><h2>${escape_html(title)}</h2> <h5>${escape_html(description)}</h5> `);
   if (gallery !== null) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<p>${escape_html(localizedGalleryCounter)}</p>`;
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`<p>${escape_html(localizedGalleryCounter)}</p>`);
   } else {
-    $$payload.out += "<!--[!-->";
+    $$renderer.push("<!--[-1-->");
   }
-  $$payload.out += `<!--]--></div>`;
+  $$renderer.push(`<!--]--></div>`);
   if ($$store_subs) unsubscribe_stores($$store_subs);
   bind_props($$props, { imagePreset, title, description, gallery });
 }
-function ModalCover($$payload, $$props) {
+function ModalCover($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
   const $$restProps = rest_props($$sanitized_props, ["transitionDuration"]);
   let transitionDuration = $$props["transitionDuration"];
-  $$payload.out += `<div${spread_attributes(
+  $$renderer.push(`<div${attributes(
     {
       class: "svelte-lightbox-overlay",
       "aria-label": "overlay",
       ...$$restProps
     },
-    { "svelte-7wg54p": true }
-  )}><!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----></div>`;
+    "svelte-obkid3"
+  )}><!--[-->`);
+  slot($$renderer, $$props, "default", {});
+  $$renderer.push(`<!--]--></div>`);
   bind_props($$props, { transitionDuration });
 }
-function Modal($$payload, $$props) {
+function Modal($$renderer, $$props) {
   const $$sanitized_props = sanitize_props($$props);
   const $$restProps = rest_props($$sanitized_props, ["transitionDuration", "imagePreset"]);
   let transitionDuration = $$props["transitionDuration"];
   let imagePreset = $$props["imagePreset"];
-  $$payload.out += `<div${spread_attributes(
+  $$renderer.push(`<div${attributes(
     {
       class: "svelte-lightbox-main",
       "aria-label": "Modal",
       ...$$restProps
     },
+    "svelte-p6z8vu",
     {
-      "svelte-891jqp": true,
       fullscreen: imagePreset === "fullscreen",
       scroll: imagePreset === "scroll"
     }
-  )}><!---->`;
-  slot($$payload, $$props, "default", {});
-  $$payload.out += `<!----></div>`;
+  )}><!--[-->`);
+  slot($$renderer, $$props, "default", {});
+  $$renderer.push(`<!--]--></div>`);
   bind_props($$props, { transitionDuration, imagePreset });
 }
-function Lightbox($$payload, $$props) {
+function Lightbox($$renderer, $$props) {
   const $$slots = sanitize_slots($$props);
-  push();
-  let title = fallback($$props["title"], "");
-  let description = fallback($$props["description"], "");
-  let imagePreset = fallback($$props["imagePreset"], "");
-  let customization = fallback($$props["customization"], () => ({}), true);
-  let transitionDuration = fallback($$props["transitionDuration"], 300);
-  let keepBodyScroll = fallback($$props["keepBodyScroll"], false);
-  let enableImageExpand = fallback($$props["enableImageExpand"], false);
-  let enableFallbackThumbnail = fallback($$props["enableFallbackThumbnail"], true);
-  let enableEscapeToClose = fallback($$props["enableEscapeToClose"], true);
-  let enableClickToClose = fallback($$props["enableClickToClose"], false);
-  let showCloseButton = fallback($$props["showCloseButton"], true);
-  let isVisible = fallback($$props["isVisible"], false);
-  const toggle = () => {
-    isVisible = !isVisible;
-  };
-  const open = () => {
-    isVisible = true;
-  };
-  const close = () => {
-    isVisible = false;
-  };
-  const programmaticController = { toggle, open, close };
-  if ($$slots.thumbnail || enableFallbackThumbnail) {
-    $$payload.out += "<!--[-->";
-    LightboxThumbnail($$payload, spread_props([
-      customization?.thumbnailProps || {},
-      {
-        children: ($$payload2) => {
-          if ($$slots.thumbnail) {
-            $$payload2.out += "<!--[-->";
-            $$payload2.out += `<!---->`;
-            slot($$payload2, $$props, "thumbnail", {});
-            $$payload2.out += `<!---->`;
-          } else {
-            $$payload2.out += "<!--[!-->";
-            $$payload2.out += `<!---->`;
-            slot($$payload2, $$props, "default", {});
-            $$payload2.out += `<!---->`;
-          }
-          $$payload2.out += `<!--]-->`;
+  $$renderer.component(($$renderer2) => {
+    let title = fallback($$props["title"], "");
+    let description = fallback($$props["description"], "");
+    let imagePreset = fallback($$props["imagePreset"], "");
+    let customization = fallback($$props["customization"], () => ({}), true);
+    let transitionDuration = fallback($$props["transitionDuration"], 300);
+    let keepBodyScroll = fallback($$props["keepBodyScroll"], false);
+    let enableImageExpand = fallback($$props["enableImageExpand"], false);
+    let enableFallbackThumbnail = fallback($$props["enableFallbackThumbnail"], true);
+    let enableEscapeToClose = fallback($$props["enableEscapeToClose"], true);
+    let enableClickToClose = fallback($$props["enableClickToClose"], false);
+    let showCloseButton = fallback($$props["showCloseButton"], true);
+    let isVisible = fallback($$props["isVisible"], false);
+    const toggle = () => {
+      isVisible = !isVisible;
+    };
+    const open = () => {
+      isVisible = true;
+    };
+    const close = () => {
+      isVisible = false;
+    };
+    const programmaticController = { toggle, open, close };
+    if ($$slots.thumbnail || enableFallbackThumbnail) {
+      $$renderer2.push("<!--[0-->");
+      LightboxThumbnail($$renderer2, spread_props([
+        customization?.thumbnailProps || {},
+        {
+          children: ($$renderer3) => {
+            if ($$slots.thumbnail) {
+              $$renderer3.push("<!--[0-->");
+              $$renderer3.push(`<!--[-->`);
+              slot($$renderer3, $$props, "thumbnail", {});
+              $$renderer3.push(`<!--]-->`);
+            } else {
+              $$renderer3.push("<!--[-1-->");
+              $$renderer3.push(`<!--[-->`);
+              slot($$renderer3, $$props, "default", {});
+              $$renderer3.push(`<!--]-->`);
+            }
+            $$renderer3.push(`<!--]-->`);
+          },
+          $$slots: { default: true }
+        }
+      ]));
+    } else {
+      $$renderer2.push("<!--[-1-->");
+    }
+    $$renderer2.push(`<!--]--> `);
+    if (isVisible) {
+      $$renderer2.push("<!--[0-->");
+      BodyChild($$renderer2, {
+        children: ($$renderer3) => {
+          ModalCover($$renderer3, spread_props([
+            { transitionDuration },
+            customization.coverProps || {},
+            {
+              children: ($$renderer4) => {
+                Modal($$renderer4, spread_props([
+                  { imagePreset, transitionDuration },
+                  customization.lightboxProps || {},
+                  {
+                    children: ($$renderer5) => {
+                      LightboxHeader($$renderer5, spread_props([
+                        {
+                          imagePreset,
+                          showCloseButton,
+                          enableEscapeToClose,
+                          closeButtonProps: customization.closeButtonProps
+                        },
+                        customization.lightboxHeaderProps || {}
+                      ]));
+                      $$renderer5.push(`<!----> `);
+                      LightboxBody($$renderer5, {
+                        imagePreset,
+                        enableImageExpand,
+                        children: ($$renderer6) => {
+                          $$renderer6.push(`<!--[-->`);
+                          slot($$renderer6, $$props, "default", {});
+                          $$renderer6.push(`<!--]-->`);
+                        },
+                        $$slots: { default: true }
+                      });
+                      $$renderer5.push(`<!----> `);
+                      LightboxFooter($$renderer5, spread_props([
+                        { imagePreset, title, description },
+                        customization.lightboxFooterProps || {}
+                      ]));
+                      $$renderer5.push(`<!---->`);
+                    },
+                    $$slots: { default: true }
+                  }
+                ]));
+              },
+              $$slots: { default: true }
+            }
+          ]));
         },
         $$slots: { default: true }
-      }
-    ]));
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--> `;
-  if (isVisible) {
-    $$payload.out += "<!--[-->";
-    BodyChild($$payload, {
-      children: ($$payload2) => {
-        ModalCover($$payload2, spread_props([
-          { transitionDuration },
-          customization.coverProps || {},
-          {
-            children: ($$payload3) => {
-              Modal($$payload3, spread_props([
-                { imagePreset, transitionDuration },
-                customization.lightboxProps || {},
-                {
-                  children: ($$payload4) => {
-                    LightboxHeader($$payload4, spread_props([
-                      {
-                        imagePreset,
-                        showCloseButton,
-                        enableEscapeToClose,
-                        closeButtonProps: customization.closeButtonProps
-                      },
-                      customization.lightboxHeaderProps || {}
-                    ]));
-                    $$payload4.out += `<!----> `;
-                    LightboxBody($$payload4, {
-                      imagePreset,
-                      enableImageExpand,
-                      children: ($$payload5) => {
-                        $$payload5.out += `<!---->`;
-                        slot($$payload5, $$props, "default", {});
-                        $$payload5.out += `<!---->`;
-                      },
-                      $$slots: { default: true }
-                    });
-                    $$payload4.out += `<!----> `;
-                    LightboxFooter($$payload4, spread_props([
-                      { imagePreset, title, description },
-                      customization.lightboxFooterProps || {}
-                    ]));
-                    $$payload4.out += `<!---->`;
-                  },
-                  $$slots: { default: true }
-                }
-              ]));
-            },
-            $$slots: { default: true }
-          }
-        ]));
-      },
-      $$slots: { default: true }
+      });
+    } else {
+      $$renderer2.push("<!--[-1-->");
+    }
+    $$renderer2.push(`<!--]-->`);
+    bind_props($$props, {
+      title,
+      description,
+      imagePreset,
+      customization,
+      transitionDuration,
+      keepBodyScroll,
+      enableImageExpand,
+      enableFallbackThumbnail,
+      enableEscapeToClose,
+      enableClickToClose,
+      showCloseButton,
+      isVisible,
+      programmaticController
     });
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]-->`;
-  bind_props($$props, {
-    title,
-    description,
-    imagePreset,
-    customization,
-    transitionDuration,
-    keepBodyScroll,
-    enableImageExpand,
-    enableFallbackThumbnail,
-    enableEscapeToClose,
-    enableClickToClose,
-    showCloseButton,
-    isVisible,
-    programmaticController
   });
-  pop();
 }
 export {
   Hamburger as H,
