@@ -204,7 +204,7 @@
     import general from "$lib/data/general.js";
     import media from "$lib/data/media.js";
     import works from "$lib/data/works.js";
-    import featuredProjects from "$lib/data/featured-projects";
+    import featuredProjects from "$lib/data/featured-projects.js";
     import { scrollReveal, staggerReveal } from "$lib/actions/scrollReveal";
 
     const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
