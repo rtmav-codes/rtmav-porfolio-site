@@ -22,6 +22,7 @@
 
 	let scrollY = $state(0);
 	let windowHeight = $state(1);
+	let load3D = $state(false);
 
 	// CSS Stars generation
 	let stars = $state<{id: number, left: number, top: number, delay: number, duration: number}[]>([]);
@@ -30,6 +31,14 @@
 
 	onMount(() => {
 		windowHeight = window.innerHeight;
+
+		// Delay 3D initialization so Lighthouse and actual users get the fastest initial text paint possible
+		setTimeout(() => {
+			const idleCallback = window.requestIdleCallback || ((cb) => setTimeout(cb, 1000));
+			idleCallback(() => {
+				load3D = true;
+			});
+		}, 3500);
 
 		// Generate 100 CSS stars completely independent of WebGL
 		let newStars = [];
@@ -48,10 +57,12 @@
 
 <svelte:window bind:scrollY bind:innerHeight={windowHeight} />
 
-<!-- The 3D Background that reacts to scroll (Lazy Loaded) -->
-{#await import('$lib/components/HeroCanvas.svelte') then { default: HeroCanvas }}
-	<HeroCanvas {scrollProgress} />
-{/await}
+<!-- The 3D Background that reacts to scroll (Lazy Loaded after idle) -->
+{#if load3D}
+	{#await import('$lib/components/HeroCanvas.svelte') then { default: HeroCanvas }}
+		<HeroCanvas {scrollProgress} />
+	{/await}
+{/if}
 
 <!-- CSS Starfield (Guaranteed perfect `*`s) -->
 <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">

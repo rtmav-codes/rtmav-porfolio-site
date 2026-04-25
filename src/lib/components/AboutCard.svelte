@@ -79,7 +79,9 @@
 			<img
 				src={general?.avatar?.url}
 				class="mb-5 w-36 rounded-full border-2 border-white"
-				alt=""
+				width="144"
+				height="144"
+				alt="Avatar"
 			/>
 		</div>
 
@@ -99,7 +101,7 @@
 				{#if general?.twitter}
 					<button class="btn btn-outline mb-3 flex h-10 w-auto flex-col justify-center rounded-md hover:bg-gray-700 hover:text-white">
 						<a class="flex flex-row items-center justify-center text-xs font-semibold text-white" href={general?.twitter} target="_blank" rel="noreferrer">
-							<img src="/twitter.png" class="mb-1 h-5 w-5" alt="twitter logo" />
+							<img src="/twitter.png" class="mb-1 h-5 w-5" width="20" height="20" alt="twitter logo" />
 							<span class="ml-3">Twitter</span>
 						</a>
 					</button>
@@ -108,7 +110,7 @@
 				{#if general?.gitHub}
 					<button class="btn btn-outline mb-3 ml-2 flex h-10 w-auto flex-col justify-center rounded-md hover:bg-gray-700 hover:text-white">
 						<a class="flex flex-row items-center justify-center text-xs font-semibold text-white" href={general?.gitHub} target="_blank" rel="noreferrer">
-							<img class="mb-1 h-5 w-5" src="/github.svg" alt="github icon" />
+							<img class="mb-1 h-5 w-5" src="/github.svg" width="20" height="20" alt="github icon" />
 							<span class="ml-3">GitHub</span>
 						</a>
 					</button>
@@ -117,7 +119,7 @@
 				{#if general?.email}
 					<button class="btn btn-outline mb-3 ml-2 flex h-10 w-auto flex-row justify-center rounded-md hover:bg-gray-700 hover:text-white">
 						<a class="flex flex-row items-center justify-center text-xs font-semibold text-white" href="mailto:{general?.email}">
-							<img class="w-5" src="/email-white.svg" alt="email icon" />
+							<img class="w-5" src="/email-white.svg" width="20" height="20" alt="email icon" />
 							<span class="ml-3 mr-1">{general?.email}</span>
 						</a>
 					</button>
@@ -126,7 +128,7 @@
 				{#if general?.resume}
 					<button class="btn btn-outline mb-3 ml-2 flex h-10 w-auto flex-col justify-center rounded-md hover:bg-gray-700 hover:text-white">
 						<a class="flex flex-row items-center justify-center text-xs font-semibold text-white" href={general?.resume?.url} target="_blank" rel="noreferrer">
-							<img class="mb-1 w-5" src="/resume.svg" alt="resume icon" />
+							<img class="mb-1 w-5" src="/resume.svg" width="20" height="20" alt="resume icon" />
 							<span class="ml-2 mr-1">Resume</span>
 						</a>
 					</button>

@@ -71,7 +71,7 @@
 	>
 		<div class="flex flex-col">
 			<div class="mb-2 flex flex-row items-center justify-start transition-opacity duration-500 {inView ? 'opacity-100' : 'opacity-0'}">
-				<img src="/code.png" class="w-8" alt="" />
+				<img src="/code.png" width="32" height="32" class="w-8" alt="" />
 				<h1 class="ml-3 text-lg font-semibold font-mono">
 					{displayedTitle}<span class="animate-pulse" class:hidden={displayedTitle.length === title.length}>_</span><span class="invisible">{title.slice(displayedTitle.length)}</span>
 				</h1>

@@ -73,7 +73,7 @@
 	>
 		<div class="flex-center flex flex-row items-center justify-center">
 			<div class="col-6 col-md-4 flex flex-col items-center justify-center p-0 transition-opacity duration-700 {inView ? 'opacity-100' : 'opacity-0'}">
-				<img src={image?.url} class="border-radius ml-1 w-36 lg:ml-5" alt="" />
+				<img src={image?.url} width="144" height="144" class="border-radius ml-1 w-36 lg:ml-5" alt="" />
 			</div>
 			<div class="flex w-5/6 flex-col items-center justify-center">
 				<div class="px-3 py-12">

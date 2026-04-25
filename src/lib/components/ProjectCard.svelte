@@ -60,6 +60,8 @@
 						src={image?.url}
 						loading="lazy"
 						decoding="async"
+						width="288"
+						height="288"
 						class="h-auto w-72 rounded-lg border border-white"
 						alt={title}
 					/>
