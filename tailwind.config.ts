@@ -10,6 +10,12 @@ export default {
 			fontFamily: {
 				display: ['dico-code-two', 'monospace'],
 				body: ['dico-code-two', 'monospace'],
+			},
+			keyframes: {
+				twinkle: {
+					'0%, 80%, 100%': { opacity: '0', transform: 'scale(0.5)' },
+					'90%': { opacity: '0.8', transform: 'scale(1.2)' },
+				}
 			}
 		}
 	},

@@ -2,7 +2,7 @@ export default [
     {
         "title": "Evoq AI",
         "description": "Solo Developed a AI consulation platform for client looking to color their hair. The platform allows users to upload a photo of themselves and get an AI generated before and after photo of themselves based on survey results or an uploaded photo.",
-        "demoUrl": "https://ai.evoqsalon.com/",
+        "demoUrl": "evoqai",
         "video": {
             "url": null
         },

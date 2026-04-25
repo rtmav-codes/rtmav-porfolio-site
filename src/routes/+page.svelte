@@ -1,213 +1,244 @@
-<div class="bg-black text-white font-mono p-5">
-    <div class="flex flex-col justify-center items-center pb-5">
-        <div class="flex flex-col lg:w-3/4 w-full">
-                <!-- About -->
-                <div class="flex flex-col col-12 mb-5" use:scrollReveal={{ delay: 0, y: 20 }}>
-                    <div class="bg-black border p-5 rounded-xl flex flex-col justify-center items-center">
-                        <!-- Avatar -->
-                        <div class="flex justify-center items-center" use:scrollReveal={{ delay: 100, y: 15 }}>
-                            <img src="{general?.avatar?.url}" class="border-2 border-white rounded-full w-36 mb-5" alt="">
-                        </div>
+<script lang="ts">
+	import general from '$lib/data/general.js';
+	import media from '$lib/data/media.js';
+	import works from '$lib/data/works.js';
+	import featuredProjects from '$lib/data/featured-projects.js';
+	import { scrollReveal, staggerReveal } from '$lib/actions/scrollReveal';
+	import HeroCanvas from '$lib/components/HeroCanvas.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import AboutCard from '$lib/components/AboutCard.svelte';
+	import ServiceCard from '$lib/components/ServiceCard.svelte';
+	import WorkCard from '$lib/components/WorkCard.svelte';
+	import { onMount } from 'svelte';
 
-                        <!-- Name + description -->
-                        <div class="flex flex-col justify-center lg:items-start items-center lg:px-4 px-0 lg:text-left text-center" use:scrollReveal={{ delay: 200, y: 15 }}>
-                            <h1 class="text-center lg:text-left text-2xl font-semibold mb-3">{general?.name}</h1>
-                            <p class="mb-5 text-sm">{general?.introDescription}</p>
-                        </div>
+	const mediaCol1 = media
+		.filter(({ column }) => column === 1)
+		.sort(({ order: a = 0 }, { order: b = 0 }) => (a > b ? 1 : -1));
+	const mediaCol2 = media
+		.filter(({ column }) => column === 2)
+		.sort(({ order: a = 0 }, { order: b = 0 }) => (a > b ? 1 : -1));
+	const mediaCol3 = media
+		.filter(({ column }) => column === 3)
+		.sort(({ order: a = 0 }, { order: b = 0 }) => (a > b ? 1 : -1));
 
-                        <!-- Socials -->
-                        <div class="flex flex-row lg:justify-start lg:items-start justify-center items-center w-full lg:px-4" use:scrollReveal={{ delay: 300, y: 15 }}>
-                            <div class="flex lg:flex-row flex-col justify-center items-center py-2 mb-2">
-                                
-                                <!-- Twitter + Discord (Optional) -->
-                                {#if general?.twitter}
-                                    <button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3">
-                                        <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="{general?.twitter}" target="_blank" rel="noreferrer">
-                                            <img src="/twitter.png" class="w-5 h-5 mb-1" alt="twitter logo">
-                                            <span class="ml-3">
-                                                Twitter
-                                            </span>
-                                        </a>
-                                    </button>
-                                {/if}
-                                
-                                <!-- GitHub -->
-                                {#if general?.gitHub}
-                                    <button class="btn btn-outline hover:bg-gray-700 hover:text-black flex flex-col justify-center rounded-md w-auto h-10 mb-3 ml-2">
-                                        <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="{general?.gitHub}" target="_blank" rel="noreferrer">
-                                            <img
-                                                class="w-5 h-5 mb-1"
-                                                src="/github.svg"
-                                                alt="email icon"
-                                            />
-                                            <span class="ml-3">
-                                                GitHub
-                                            </span>
-                                        </a>
-                                    </button>
-                                {/if}
+	let entered = $state(false);
+	let scrollY = $state(0);
+	let windowHeight = $state(1);
 
-                                <!-- Email -->
-                                {#if general?.email}
-                                    <button class="btn btn-outline hover:bg-gray-700 flex flex-row justify-center rounded-md w-auto h-10 ml-2 mb-3">
-                                        <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="mailto:{general?.email}">
-                                            <img 
-                                                class="w-5"
-                                                src="/email-white.svg"
-                                                alt="email icon"
-                                            />
-                                            <span class="ml-3 mr-1">
-                                                {general?.email}
-                                            </span>
-                                        </a>
-                                    </button>
-                                {/if}
+	// CSS Stars generation
+	let stars = $state<{id: number, left: number, top: number, delay: number, duration: number}[]>([]);
 
-                                <!-- Resume -->
-                                {#if general?.resume}
-                                    <button class="btn btn-outline hover:bg-gray-700 flex flex-col justify-center rounded-md w-auto h-10 ml-2 mb-3">
-                                        <a class="text-white text-xs font-semibold flex flex-row justify-center items-center" href="{general?.resume?.url}" target="_blank" rel="noreferrer">
-                                            <img
-                                                class="w-5 mb-1"
-                                                src="/resume.svg"
-                                                alt="resume icon"
-                                            />
-                                            <span class="ml-2 mr-1">
-                                                Resume
-                                            </span>
-                                        </a>
-                                    </button>
-                                {/if}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	let scrollProgress = $derived(Math.min(Math.max(scrollY / windowHeight, 0), 1));
 
-                <!-- Services -->
-                <div class="flex flex-col" use:scrollReveal={{ y: 20 }}>
-                    <h1 class="text-2xl mb-3 font-bold">Services</h1>
-                </div>
+	function handleEnter() {
+		entered = true;
+		window.scrollTo(0, 0);
+		document.body.style.overflow = 'auto';
+	}
 
-                <!-- Development Services -->
-                <div class="flex flex-col col-12" use:scrollReveal={{ delay: 100, y: 25 }}>
-                    <div class="bg-black border rounded-xl px-10 lg:py-10 py-10">
-                        <div class="flex flex-col">
-                            <div class="flex flex-row justify-start items-center mb-2">
-                                <img src="/code.png" class="w-8" alt="">
-                                <h1 class="font-semibold text-lg ml-3">Development</h1>
-                            </div>
-                            <p class="text-sm">Need a website or app? I can do that! I also offer the option to include a Content Management System so that my clients can own their content and make website updates themselves whenever they want.</p>
-                        </div>
-                    </div>
-                </div>
+	onMount(() => {
+		document.body.style.overflow = 'hidden';
+		windowHeight = window.innerHeight;
 
-                <!-- Work Experience -->
-                {#if general?.id === "clbucvbhetqmq0alraz7sbmtz"}
-                    <div class="flex flex-col col-12 mt-5 lg:px-0 px-5" use:scrollReveal={{ y: 20 }}>
-                        <h1 class="text-2xl font-bold mb-3">Work Experience</h1>
-                    </div>
-                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4" use:staggerReveal={{ staggerDelay: 150 }}>
-                        {#each works as { title, company, image }}
-                            <div class="flex flex-row justify-start items-center border rounded-xl overflow-hidden h-100 w-full py-5 px-10">
-                                <div class="flex flex-row flex-center justify-center items-center">
-                                    <div class="flex flex-col justify-center items-center col-6 col-md-4 p-0">
-                                        <img src="{image?.url}" class="w-36 border-radius lg:ml-5 ml-1" alt="">
-                                    </div>
-                                    <div class="flex flex-col justify-center items-center w-5/6">
-                                        <div class="px-3 py-12">
-                                            <strong class="lg:text-lg text-ld">{title}</strong>
-                                            <p class="text-xs">at <strong>{company}</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {/each}
-                    </div>
-                {/if}
-            
+		// Generate 100 CSS stars completely independent of WebGL
+		let newStars = [];
+		for(let i=0; i<100; i++) {
+			newStars.push({
+				id: i,
+				left: Math.random() * 100,
+				top: Math.random() * 100,
+				delay: Math.random() * 5,
+				duration: 2 + Math.random() * 3
+			});
+		}
+		stars = newStars;
+	});
+</script>
 
+<svelte:window bind:scrollY bind:innerHeight={windowHeight} />
 
-                <!-- Recent Projects -->
-                <h2 class="text-2xl font-bold mt-5 mb-3" use:scrollReveal={{ y: 20 }}>Recent Projects</h2>
-                <div use:staggerReveal={{ staggerDelay: 200 }}>
-                    {#each featuredProjects as { title, description, image, demoUrl }}
-                        <div class="flex flex-col lg:flex-row justify-start items-center border rounded-xl overflow-hidden h-100 p-10 mb-5">
-                            <div class="flex lg:flex-row flex-col justify-start items-center">
-                                <div class="flex flex-col justify-start items-center lg:w-1/4 w-full">
-                                    <div class="flex flex-col justify-start items-start lg:mt-0 mt-5">
-                                        <img 
-                                            src="{image?.url}" 
-                                            class="w-72 h-auto rounded-lg border border-white" 
-                                            alt=""
-                                        />
-                                    </div>
-                                </div>
-                                <div class="lg:w-3/4 w-full lg:my-0 my-5 lg:pl-10">
-                                    <h1 class="lg:text-xl text-lg font-semibold mb-2">{title}</h1>
-                                    <p class="lg:text-sm text-xs mb-2">{description}</p>
+<!-- The 3D Background that reacts to scroll -->
+<HeroCanvas {scrollProgress} />
 
-                                    {#if demoUrl}
-                                        <a href="{demoUrl}" target="_blank" class="link font-bold hover:text-gray-300 transition-colors duration-200" rel="noreferrer">View Project</a>
-                                    {/if}
-                                </div>
-                            </div>
-                        </div>
-                    {/each}
-                </div>
-
-            <!-- Contact -->
-            <h1 class="text-2xl font-bold mt-5 mb-3" use:scrollReveal={{ y: 20 }}>
-                CONTACT
-            </h1>
-    
-            <div class="py-8 mb-5 lg:mb-5 lg:py-16 px-4 lg:mx-auto border rounded-xl border-white" use:scrollReveal={{ delay: 100, y: 30 }}>
-                <div class="flex flex-col justify-center items-center p-10">
-                    <p class="mb-8 lg:mb-16 font-light text-center text-white sm:text-xl">
-                        Have a question for our team? Feel free to read out and we will get back to you as soon as possible!
-                    </p>
-                    <form target="_blank" action="https://formsubmit.co/rotem.avisar@gmail.com" method="POST" class="w-full">
-                        <div class="form-group">
-                            <div class="form-row">
-                                <label for="email" class="block text-sm font-bold">Your email</label>
-                                <input type="email" name="email" class="form-control shadow-sm bg-gray-50 border border-gray-300 
-                                text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block 
-                                w-full p-2.5" placeholder="name@email.com" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="subject" class="block text-sm font-bold pt-2">Subject</label>
-                                <input type="text" name="subject" class="form-control block p-3 w-full text-sm text-gray-900 
-                                bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 
-                                focus:border-primary-500" placeholder="Let us know how we can help you" required>
-                            </div>
-                            <div class="sm:col-span-2 form-row">
-                                <label for="message" class="block text-sm font-bold pt-2">Your message</label>
-                                <textarea name="message" rows="6" class="form-control block p-2.5 w-full text-sm text-gray-900
-                                 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 
-                                 focus:border-primary-500" placeholder="Leave a comment...">
-                                </textarea>
-                            </div>
-                            <button type="submit" class="py-3 px-5 text-sm font-semibold text-center text-gray-900 rounded-lg 
-                            bg-white sm:w-fit hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 mt-5">
-                                Send message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
-    </div>
+<!-- CSS Starfield (Guaranteed perfect `*`s) -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+	{#each stars as star (star.id)}
+		<div 
+			class="absolute text-white font-mono text-sm opacity-0 animate-[twinkle_var(--dur)_infinite]"
+			style="
+				left: {star.left}%; 
+				top: {star.top}%; 
+				animation-delay: {star.delay}s;
+				--dur: {star.duration}s;
+			"
+		>
+			*
+		</div>
+	{/each}
 </div>
 
-<script lang="ts">
-    
-    import general from "$lib/data/general.js";
-    import media from "$lib/data/media.js";
-    import works from "$lib/data/works.js";
-    import featuredProjects from "$lib/data/featured-projects.js";
-    import { scrollReveal, staggerReveal } from "$lib/actions/scrollReveal";
+<!-- OVERLAY: The "Enter" / Loading Screen (Black & White, Monospace) -->
+{#if !entered}
+	<div
+		class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black font-mono text-white transition-opacity duration-1000"
+	>
+		<h1 class="mb-8 text-3xl font-bold uppercase tracking-widest">[Welcome to RTMAV_LABS]</h1>
+		<button
+			onclick={handleEnter}
+			class="btn btn-outline rounded-md px-8 py-2 text-sm uppercase tracking-widest transition-colors hover:bg-white hover:text-black"
+		>
+			Enter
+		</button>
+	</div>
+{/if}
 
-    const mediaCol1 = media.filter(({ column }) => column === 1).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
-    const mediaCol2 = media.filter(({ column }) => column === 2).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
-    const mediaCol3 = media.filter(({ column }) => column === 3).sort(({ order : a = 0 }, { order : b = 0 }) => (a > b ? 1 : -1));
-</script>
+<!-- MAIN CONTENT WRAPPER -->
+<div
+	class="relative z-10 w-full font-mono text-white"
+	class:opacity-0={!entered}
+	class:pointer-events-none={!entered}
+>
+	<!-- Hero Section (100vh spacer for the fly-through). -->
+	<section class="pointer-events-none flex h-screen flex-col items-center justify-center relative">
+		<div
+			class="absolute bottom-12 flex animate-bounce flex-col items-center transition-opacity duration-300"
+			class:opacity-0={scrollProgress > 0.05}
+			class:opacity-80={scrollProgress <= 0.05}
+		>
+			<span class="mb-4 block text-xs uppercase tracking-widest text-white">Scroll Down</span>
+			<!-- Down Arrow SVG -->
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-8 w-8 text-white"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="1.5"
+					d="M19 14l-7 7m0 0l-7-7m7 7V3"
+				/>
+			</svg>
+		</div>
+	</section>
+
+	<!-- Original Portfolio Content -->
+	<section
+		class="relative z-20 min-h-screen border-t border-white/20 bg-black/40 p-5 backdrop-blur-sm"
+	>
+		<div class="flex flex-col items-center justify-center pb-5">
+			<div class="flex w-full flex-col lg:w-3/4">
+				<!-- About -->
+				<div class="col-12 mb-5 flex flex-col" use:scrollReveal={{ delay: 0, y: 20 }}>
+					<AboutCard {general} />
+				</div>
+
+				<!-- Services -->
+				<div class="flex flex-col" use:scrollReveal={{ y: 20 }}>
+					<h1 class="mb-3 text-2xl font-bold">Services</h1>
+				</div>
+
+				<!-- Development Services -->
+				<div class="col-12 flex flex-col" use:scrollReveal={{ delay: 100, y: 25 }}>
+					<ServiceCard />
+				</div>
+
+				<!-- Work Experience -->
+				{#if general?.id === 'clbucvbhetqmq0alraz7sbmtz'}
+					<div class="col-12 mt-5 flex flex-col px-5 lg:px-0" use:scrollReveal={{ y: 20 }}>
+						<h1 class="mb-3 text-2xl font-bold">Work Experience</h1>
+					</div>
+					<div
+						class="grid grid-cols-1 gap-4 lg:grid-cols-2"
+						use:staggerReveal={{ staggerDelay: 150 }}
+					>
+						{#each works as { title, company, image }}
+							<WorkCard {title} {company} {image} />
+						{:else}
+							<p class="text-sm">No work experience loaded.</p>
+						{/each}
+					</div>
+				{/if}
+
+				<!-- Recent Projects -->
+				<h2 class="mb-3 mt-5 text-2xl font-bold" use:scrollReveal={{ y: 20 }}>Recent Projects</h2>
+				<div use:staggerReveal={{ staggerDelay: 200 }}>
+					{#each featuredProjects as { title, description, image, demoUrl }}
+						<ProjectCard {title} {description} {image} {demoUrl} />
+					{:else}
+						<p class="text-sm">No recent projects loaded.</p>
+					{/each}
+				</div>
+
+				<!-- Contact -->
+				<h1 class="mb-3 mt-5 text-2xl font-bold" use:scrollReveal={{ y: 20 }}>CONTACT</h1>
+
+				<div
+					class="mb-5 rounded-xl border border-white px-4 py-8 lg:mx-auto lg:mb-5 lg:py-16"
+					use:scrollReveal={{ delay: 100, y: 30 }}
+				>
+					<div class="flex flex-col items-center justify-center p-10">
+						<p class="mb-8 text-center font-light text-white sm:text-xl lg:mb-16">
+							Have a question for our team? Feel free to read out and we will get back to you as
+							soon as possible!
+						</p>
+						<form
+							target="_blank"
+							action="https://formsubmit.co/rotem.avisar@gmail.com"
+							method="POST"
+							class="w-full"
+						>
+							<div class="form-group">
+								<div class="form-row">
+									<label for="email" class="block text-sm font-bold">Your email</label>
+									<input
+										type="email"
+										name="email"
+										class="focus:ring-primary-500 focus:border-primary-500 form-control block w-full
+									rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm
+									text-gray-900 shadow-sm"
+										placeholder="name@email.com"
+										required
+									/>
+								</div>
+								<div class="form-row">
+									<label for="subject" class="block pt-2 text-sm font-bold">Subject</label>
+									<input
+										type="text"
+										name="subject"
+										class="focus:ring-primary-500 focus:border-primary-500 form-control block w-full rounded-lg
+									border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900
+									shadow-sm"
+										placeholder="Let us know how we can help you"
+										required
+									/>
+								</div>
+								<div class="form-row sm:col-span-2">
+									<label for="message" class="block pt-2 text-sm font-bold">Your message</label>
+									<textarea
+										name="message"
+										rows="6"
+										class="focus:ring-primary-500 focus:border-primary-500 form-control block w-full rounded-lg
+									 border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900
+									 shadow-sm"
+										placeholder="Leave a comment..."
+									>
+									</textarea>
+								</div>
+								<button
+									type="submit"
+									class="focus:ring-primary-300 mt-5 rounded-lg bg-white px-5 py-3 text-center
+								text-sm font-semibold text-gray-900 hover:bg-gray-500 focus:outline-none focus:ring-4 sm:w-fit"
+								>
+									Send message
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

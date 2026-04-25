@@ -21,6 +21,7 @@
 		"@sveltejs/adapter-vercel": "^5.5.0",
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@types/three": "^0.184.0",
 		"autoprefixer": "^10.4.20",
 		"daisyui": "^4.12.22",
 		"eslint": "^9.7.0",
@@ -45,11 +46,14 @@
 	"dependencies": {
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
+		"@threlte/core": "^8.5.9",
+		"@threlte/extras": "^9.14.9",
 		"@vercel/analytics": "^1.4.1",
 		"photoswipe": "^5.4.4",
 		"svelte-magnifier": "^0.0.1",
 		"svelte-photoswipe": "^0.0.2",
 		"svelte-video-player": "^1.2.5",
-		"svelte-video-player-kit": "^1.2.8"
+		"svelte-video-player-kit": "^1.2.8",
+		"three": "^0.184.0"
 	}
 }
