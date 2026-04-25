@@ -4,7 +4,9 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
 		<meta property="og:image" content="%sveltekit.assets%/favicon.ico" />
-		<link rel="stylesheet" href="https://use.typekit.net/wrc3qlm.css">
+		<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+		<link rel="stylesheet" href="https://use.typekit.net/wrc3qlm.css" media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href="https://use.typekit.net/wrc3qlm.css"></noscript>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>

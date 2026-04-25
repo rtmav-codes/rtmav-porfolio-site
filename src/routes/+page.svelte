@@ -4,7 +4,6 @@
 	import works from '$lib/data/works.js';
 	import featuredProjects from '$lib/data/featured-projects.js';
 	import { scrollReveal, staggerReveal } from '$lib/actions/scrollReveal';
-	import HeroCanvas from '$lib/components/HeroCanvas.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import AboutCard from '$lib/components/AboutCard.svelte';
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
@@ -21,7 +20,6 @@
 		.filter(({ column }) => column === 3)
 		.sort(({ order: a = 0 }, { order: b = 0 }) => (a > b ? 1 : -1));
 
-	let entered = $state(false);
 	let scrollY = $state(0);
 	let windowHeight = $state(1);
 
@@ -30,14 +28,7 @@
 
 	let scrollProgress = $derived(Math.min(Math.max(scrollY / windowHeight, 0), 1));
 
-	function handleEnter() {
-		entered = true;
-		window.scrollTo(0, 0);
-		document.body.style.overflow = 'auto';
-	}
-
 	onMount(() => {
-		document.body.style.overflow = 'hidden';
 		windowHeight = window.innerHeight;
 
 		// Generate 100 CSS stars completely independent of WebGL
@@ -57,8 +48,10 @@
 
 <svelte:window bind:scrollY bind:innerHeight={windowHeight} />
 
-<!-- The 3D Background that reacts to scroll -->
-<HeroCanvas {scrollProgress} />
+<!-- The 3D Background that reacts to scroll (Lazy Loaded) -->
+{#await import('$lib/components/HeroCanvas.svelte') then { default: HeroCanvas }}
+	<HeroCanvas {scrollProgress} />
+{/await}
 
 <!-- CSS Starfield (Guaranteed perfect `*`s) -->
 <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -77,26 +70,9 @@
 	{/each}
 </div>
 
-<!-- OVERLAY: The "Enter" / Loading Screen (Black & White, Monospace) -->
-{#if !entered}
-	<div
-		class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black font-mono text-white transition-opacity duration-1000 px-4 text-center"
-	>
-		<h1 class="mb-8 text-xl md:text-3xl font-bold uppercase tracking-widest break-words">[Welcome to RTMAV_LABS]</h1>
-		<button
-			onclick={handleEnter}
-			class="btn btn-outline rounded-md px-8 py-2 text-sm uppercase tracking-widest transition-colors hover:bg-white hover:text-black"
-		>
-			Enter
-		</button>
-	</div>
-{/if}
-
 <!-- MAIN CONTENT WRAPPER -->
 <div
 	class="relative z-10 w-full font-mono text-white"
-	class:opacity-0={!entered}
-	class:pointer-events-none={!entered}
 >
 	<!-- Hero Section (100vh spacer for the fly-through). -->
 	<section class="pointer-events-none flex h-screen flex-col items-center justify-center relative">

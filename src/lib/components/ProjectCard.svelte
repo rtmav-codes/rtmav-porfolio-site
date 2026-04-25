@@ -8,9 +8,6 @@
 	let cardRef;
 	
 	let inView = $state(false);
-	let displayedTitle = $state('');
-	let displayedDesc = $state('');
-	let showLink = $state(false);
 
 	function handleMouseMove(e) {
 		if (!cardRef) return;
@@ -30,33 +27,11 @@
 		rotY = 0;
 	}
 
-	function typeText(text, callback, speed = 30) {
-		return new Promise((resolve) => {
-			let i = 0;
-			function type() {
-				if (i < text.length) {
-					callback(text.slice(0, i + 1));
-					i++;
-					setTimeout(type, speed);
-				} else {
-					resolve();
-				}
-			}
-			type();
-		});
-	}
-
 	onMount(() => {
 		const observer = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting && !inView) {
 				inView = true;
 				observer.disconnect();
-				
-				(async () => {
-					await typeText(title, (val) => displayedTitle = val, 40);
-					await typeText(description, (val) => displayedDesc = val, 20);
-					showLink = true;
-				})();
 			}
 		}, { threshold: 0.2 });
 
@@ -83,21 +58,23 @@
 				<div class="mt-5 flex flex-col items-start justify-start lg:mt-0">
 					<img
 						src={image?.url}
+						loading="lazy"
+						decoding="async"
 						class="h-auto w-72 rounded-lg border border-white"
 						alt={title}
 					/>
 				</div>
 			</div>
 			<div class="my-5 w-full lg:my-0 lg:w-3/4 lg:pl-10">
-				<h1 class="mb-2 text-lg font-semibold lg:text-xl font-mono">
-					{displayedTitle}<span class="animate-pulse" class:hidden={displayedTitle.length === title.length}>_</span><span class="invisible">{title.slice(displayedTitle.length)}</span>
+				<h1 class="mb-2 text-lg font-semibold lg:text-xl font-mono relative overflow-hidden transition-all duration-1000 ease-out {inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}">
+					{title}
 				</h1>
-				<p class="mb-2 text-xs lg:text-sm font-mono text-white/70">
-					{displayedDesc}<span class="animate-pulse" class:hidden={displayedTitle.length < title.length || displayedDesc.length === description.length}>_</span><span class="invisible">{description.slice(displayedDesc.length)}</span>
+				<p class="mb-2 text-xs lg:text-sm font-mono text-white/70 relative overflow-hidden transition-all duration-1000 delay-200 ease-out {inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}">
+					{description}
 				</p>
 
 				{#if demoUrl}
-					<div class="mt-4 transition-opacity duration-500 {showLink ? 'opacity-100' : 'opacity-0'}">
+					<div class="mt-4 transition-all duration-1000 delay-500 {inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}">
 						<a
 							href={demoUrl}
 							target="_blank"
