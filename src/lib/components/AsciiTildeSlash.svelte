@@ -98,7 +98,12 @@
 		new THREE.Vector3(-0.5, -1.2, 0),
 		new THREE.Vector3(1, 0.5, 0),
 	]);
+
+	let innerWidth = $state(1024);
+	let scale = $derived(innerWidth < 768 ? 0.5 : 1.0);
 </script>
+
+<svelte:window bind:innerWidth />
 
 <AsciiRenderer characters="        .:-+*=%@#80db" color="#ffffff" invert={false} />
 
@@ -110,7 +115,7 @@
 
 <!-- Floating ~/ Shape -->
 <Float speed={2} rotationIntensity={0.1} floatIntensity={0.5}>
-	<T.Group rotation={[rotX, rotY, 0]}>
+	<T.Group rotation={[rotX, rotY, 0]} {scale}>
 		
 		<T.Mesh position={[-1.5, 1, 0]}>
 			<!-- Increased tube radius from 0.6 to 1.3 to make it much thicker/filled -->

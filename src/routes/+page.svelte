@@ -80,9 +80,9 @@
 <!-- OVERLAY: The "Enter" / Loading Screen (Black & White, Monospace) -->
 {#if !entered}
 	<div
-		class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black font-mono text-white transition-opacity duration-1000"
+		class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black font-mono text-white transition-opacity duration-1000 px-4 text-center"
 	>
-		<h1 class="mb-8 text-3xl font-bold uppercase tracking-widest">[Welcome to RTMAV_LABS]</h1>
+		<h1 class="mb-8 text-xl md:text-3xl font-bold uppercase tracking-widest break-words">[Welcome to RTMAV_LABS]</h1>
 		<button
 			onclick={handleEnter}
 			class="btn btn-outline rounded-md px-8 py-2 text-sm uppercase tracking-widest transition-colors hover:bg-white hover:text-black"
