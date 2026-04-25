@@ -15,6 +15,7 @@ export default defineConfig({
 	],
 
 	build: {
+		chunkSizeWarningLimit: 1000,
 		rollupOptions: {
 			onwarn(warning, warn) {
 				// Suppress Rollup warnings from Flowbite Svelte
