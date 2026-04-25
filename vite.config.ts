@@ -11,7 +11,7 @@ export default defineConfig({
 			jpg: { quality: 80 },
 			webp: { quality: 80 },
 			avif: { quality: 80 }
-		})
+		}) as any
 	],
 
 	build: {
