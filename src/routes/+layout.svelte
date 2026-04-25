@@ -2,8 +2,10 @@
 	import '../app.css';
 	let { children } = $props();
 	import general from '$lib/data/general.js';
+	import { dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
-	injectAnalytics();
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 
 <div class="min-h-screen bg-black">
