@@ -78,6 +78,20 @@
 						storage.
 					</li>
 				</ul>
+
+				<div class="mt-12 flex w-full justify-center">
+					<video 
+						src="/evoq-ai/evoq-ai-demo.mp4" 
+						autoplay 
+						loop 
+						muted 
+						playsinline 
+						controls
+						class="w-full rounded-xl border border-gray-800 shadow-2xl"
+					>
+						<track kind="captions" />
+					</video>
+				</div>
 			</div>
 		</div>
 	</div>
